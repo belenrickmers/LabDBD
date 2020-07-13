@@ -2,11 +2,16 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\CategoryProduct;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(CategoryProduct::class, function (Faker $faker) {
+    $idCategory = App\Category::pluck('id')->toArray();
+    $idProduct = App\Product::pluck('id')->toArray();
+
     return [
-        //
+        'idCategory' => $faker->randomElement($idCategory),
+        'idProduct' => $faker->randomElement($idProduct),
+        
     ];
 });

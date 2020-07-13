@@ -2,11 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Category;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Category::class, function (Faker $faker) {
     return [
-        //
+        'cat_name' => $faker->word, 
+        'cat_description' => $faker->text($maxNbChars = 200),
     ];
 });

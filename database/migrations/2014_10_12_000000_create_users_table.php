@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id('id')->autoincrement();
             $table->unsignedBigInteger('idRole');
             $table->string('password', 20);
-            $table->string('user_name', 20);
+            $table->string('first_name', 20);
             $table->string('last_name', 20);
             $table->date('dateofbirth');
             $table->string('email', 50)->unique(); //cambiado de 40 a 50

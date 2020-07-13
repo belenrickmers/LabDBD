@@ -2,11 +2,15 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\UserProduct;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(UserProduct::class, function (Faker $faker) {
+    $idPermission = App\User::pluck('id')->toArray();
+    $idRole = App\Product::pluck('id')->toArray();
+
     return [
-        //
+        'idUser' => $faker->randomElement($idUser),
+        'idProduct' => $faker->randomElement($idProduct),
     ];
 });

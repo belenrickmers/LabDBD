@@ -18,11 +18,16 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+    $idRole = App\Role::pluck('id')->toArray();
     return [
-        'name' => $faker->name,
+        'idRole' => $faker->randomElement($idRole),
+        'password' => $faker->password,
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'dateofbirth' => $faker->dateTime($max = 'now', $timezone = null),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'contact_number' => $faker->randomNumber($nbDigits = 8, $strict = false)
         'remember_token' => Str::random(10),
     ];
 });

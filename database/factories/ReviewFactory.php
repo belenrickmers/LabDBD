@@ -2,11 +2,12 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Review;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Review::class, function (Faker $faker) {
     return [
-        //
+        'comment' => $faker->text,
+        'value' => $faker->randomDigit,
     ];
 });
