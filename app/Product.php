@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //Faltaria la foto
-    protected $fillable = ['product_name', 'price', 'product_description', 'region', 'comuna', 'availability', 'review_average'];
+    protected $fillable = ['productName', 'price', 'productDescription', 'region', 'comuna', 'availability', 'reviewAverage'];
 
     public function transaction(){
         return $this->hasMany(Transaction::class);
