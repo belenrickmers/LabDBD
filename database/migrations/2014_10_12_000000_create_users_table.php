@@ -17,12 +17,12 @@ class CreateUsersTable extends Migration
             $table->id('id')->autoincrement();
             $table->unsignedBigInteger('idRole');
             $table->string('password', 20);
-            $table->string('first_name', 20);
-            $table->string('last_name', 20);
+            $table->string('firstName', 20);
+            $table->string('lastName', 20);
             $table->date('dateofbirth');
             $table->string('email', 50)->unique(); //cambiado de 40 a 50
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('contact_number');
+            $table->integer('contactNumber');
             $table->rememberToken();
             $table->timestamps();
         });

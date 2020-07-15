@@ -7,8 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Payment::class, function (Faker $faker) {
     return [
-        'pay_method' => $faker->words($nb = 3, $asText = true),
-        'payment_state' => $faker->boolean,
-        'ts_payment' => $faker->dateTime($max = 'now', $timezone = null),
+        'payMethod' => $faker->word,
+        'paymentState' => $faker->boolean,
+        'tsPayment' => $faker->dateTime($max = 'now', $timezone = null),
     ];
 });

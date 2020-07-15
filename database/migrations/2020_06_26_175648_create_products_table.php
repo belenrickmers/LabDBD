@@ -15,14 +15,14 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id('id')->autoincrement();
-            $table->string('product_name', 30);
+            $table->string('productName', 30);
             $table->integer('price'); //deberia ser del tipo money?
-            $table->string('product_description', 250); //modificado de 200 a 250
+            $table->string('productDescription', 250); //modificado de 200 a 250
             $table->string('region', 40);
             $table->string('comuna', 40);
             $table->boolean('availability'); //Estado disponible o no disponible
             //$table->string('product_picture') foto del producto
-            $table->decimal('review_average', 4, 2); //promedio de valoracion
+            $table->decimal('reviewAverage', 4, 2); //promedio de valoracion
             $table->timestamps();
         });
     }

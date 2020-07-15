@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Review::class, function (Faker $faker) {
     return [
         'comment' => $faker->text,
-        'value' => $faker->randomDigit,
+        'rate' => $faker->randomDigit,
     ];
 });

@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Permission::class, function (Faker $faker) {
     return [
-        'permissionName' => $faker->word,
-        'permissionDescription' => $faker->text,
+        'permission' => $faker->word,
+        'permDescription' => $faker->text,
     ];
 });

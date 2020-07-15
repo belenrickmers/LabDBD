@@ -19,8 +19,8 @@ class CreateAccountsTable extends Migration
             $table->unsignedBigInteger('idUser');
             //referencia foranea
             $table->foreign('idUser')->references('id')->on('users');
-            $table->integer('card_number'); //el numero de tarjeta no deberia der un entero?
-            $table->string('card_type', 10); //tipo de cuenta
+            $table->integer('cardNumber'); //el numero de tarjeta no deberia der un entero?
+            $table->string('cardType', 20); //tipo de cuenta
             $table->string('bank', 20); //nombre banco
             $table->timestamps();
         });

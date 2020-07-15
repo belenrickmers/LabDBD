@@ -16,7 +16,7 @@ $factory->define(Transaction::class, function (Faker $faker) {
         'idProduct' => $faker->randomElement($idProduct),
         'idReview' => $faker->randomElement($idReview),
         'idPayment' => $faker->randomElement($idPayment),
-        'rent_time' => $faker->dateTime($max = 'now', $timezone = null),
-        'ts_transaction' => $faker->dateTime($max = 'now', $timezone = null),
+        'rentTime' => $faker->dateTime($max = 'now', $timezone = null),
+        'tsTransaction' => $faker->dateTime($max = 'now', $timezone = null),
     ];
 });

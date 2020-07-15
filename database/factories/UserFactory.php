@@ -22,12 +22,12 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'idRole' => $faker->randomElement($idRole),
         'password' => $faker->password,
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'firstName' => $faker->firstName,
+        'lastName' => $faker->lastName,
         'dateofbirth' => $faker->dateTime($max = 'now', $timezone = null),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'contact_number' => $faker->randomNumber($nbDigits = 8, $strict = false)
+        'contactNumber' => $faker->randomNumber($nbDigits = 8, $strict = false),
         'remember_token' => Str::random(10),
     ];
 });

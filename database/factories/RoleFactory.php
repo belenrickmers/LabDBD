@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Role::class, function (Faker $faker) {
     return [
         'roleName' => $faker->word,
-        'roleDesc' => $faker->text,
+        'roleDescription' => $faker->text,
     ];
 });
