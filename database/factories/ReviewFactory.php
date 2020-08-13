@@ -9,5 +9,6 @@ $factory->define(Review::class, function (Faker $faker) {
     return [
         'comment' => $faker->text,
         'rate' => $faker->randomDigit,
+        'visible' => $faker->boolean,
     ];
 });

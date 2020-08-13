@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->boolean('availability'); //Estado disponible o no disponible
             //$table->string('product_picture') foto del producto
             $table->decimal('reviewAverage', 4, 2); //promedio de valoracion
+            $table->boolean('visible');
             $table->timestamps();
         });
     }

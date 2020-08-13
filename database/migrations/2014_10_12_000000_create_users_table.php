@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 50)->unique(); //cambiado de 40 a 50
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('contactNumber');
+            $table->boolean('visible');
             $table->rememberToken();
             $table->timestamps();
         });

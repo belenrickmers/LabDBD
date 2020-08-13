@@ -9,5 +9,6 @@ $factory->define(Category::class, function (Faker $faker) {
     return [
         'categoryName' => $faker->word, 
         'categoryDescription' => $faker->text($maxNbChars = 200),
+        'visible' => $faker->boolean,
     ];
 });

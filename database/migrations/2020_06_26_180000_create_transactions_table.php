@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedBigInteger('idProduct');
             $table->unsignedBigInteger('idReview');
             $table->unsignedBigInteger('idPayment');
+            $table->boolean('visible');
             //referencia las foraneas
             $table->foreign('idUser')->references('id')->on('users');
             $table->foreign('idProduct')->references('id')->on('products');

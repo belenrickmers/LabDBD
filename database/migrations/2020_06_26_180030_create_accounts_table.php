@@ -22,6 +22,7 @@ class CreateAccountsTable extends Migration
             $table->integer('cardNumber'); //el numero de tarjeta no deberia der un entero?
             $table->string('cardType', 20); //tipo de cuenta
             $table->string('bank', 20); //nombre banco
+            $table->boolean('visible');
             $table->timestamps();
         });
     }

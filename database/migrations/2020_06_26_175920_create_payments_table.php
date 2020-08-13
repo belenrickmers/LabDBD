@@ -18,6 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->string('payMethod', 20);
             $table->boolean('paymentState');
             $table->timestamp('tsPayment'); //falta la cantidad de digitos??
+            $table->boolean('visible');
             $table->timestamps();
         });
     }

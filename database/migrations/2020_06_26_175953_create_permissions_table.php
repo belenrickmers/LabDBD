@@ -17,6 +17,7 @@ class CreatePermissionsTable extends Migration
             $table->id('id')->autoincrement();
             $table->string('permission', 20);
             $table->string('permDescription', 200);
+            $table->boolean('visible');
             $table->timestamps();
         });
     }

@@ -13,5 +13,6 @@ $factory->define(Account::class, function (Faker $faker) {
         'cardNumber' => $faker->randomNumber($nbDigits = NULL, $strict = false),
         'cardType' => $faker->word, 
         'bank' => $faker->word,
+        'visible' => $faker->boolean,
     ];
 });

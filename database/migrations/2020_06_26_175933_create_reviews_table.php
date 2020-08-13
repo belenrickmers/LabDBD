@@ -17,6 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id('id')->autoincrement();
             $table->string('comment', 250); //modificado de 150 a 250
             $table->integer('rate'); //valoracion
+            $table->boolean('visible');
             $table->timestamps();
         });
     }

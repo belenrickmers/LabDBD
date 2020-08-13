@@ -13,6 +13,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'region' => $faker->word, 
         'comuna' => $faker->word,
         'availability' => $faker->boolean,
+        'visible' => $faker->boolean,
         'reviewAverage' => $faker->randomDigit, 
     ];
 });

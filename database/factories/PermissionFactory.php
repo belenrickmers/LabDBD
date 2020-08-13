@@ -9,5 +9,6 @@ $factory->define(Permission::class, function (Faker $faker) {
     return [
         'permission' => $faker->word,
         'permDescription' => $faker->text,
+        'visible' => $faker->boolean,
     ];
 });

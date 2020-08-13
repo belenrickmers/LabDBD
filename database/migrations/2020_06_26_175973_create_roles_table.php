@@ -17,6 +17,7 @@ class CreateRolesTable extends Migration
             $table->id('id')->autoincrement();
             $table->string('roleName', 20);
             $table->string('roleDescription', 200);
+            $table->boolean('visible');
             $table->timestamps();
         });
     }

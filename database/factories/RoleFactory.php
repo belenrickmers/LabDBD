@@ -9,5 +9,6 @@ $factory->define(Role::class, function (Faker $faker) {
     return [
         'roleName' => $faker->word,
         'roleDescription' => $faker->text,
+        'visible' => $faker->boolean,
     ];
 });

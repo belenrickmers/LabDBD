@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstName', 'lastName', 'dateofbirth', 'email', 'password', 'contactNumber',
+        'firstName', 'lastName', 'dateofbirth', 'email', 'password', 'contactNumber', 'visible'
     ];
 
     /**
@@ -53,7 +53,7 @@ class User extends Authenticatable
         return $this->hasMany(UserProduct::class);
     }
 
-    public function history(){
-        return $this->hasMany(History::class);
-    }
+    //public function history(){
+    //    return $this->hasMany(History::class);
+    //}
 }

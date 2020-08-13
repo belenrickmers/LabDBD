@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id('id')->autoincrement();
             $table->string('categoryName',20); 
             $table->string('categoryDescription', 200);
+            $table->boolean('visible');
             $table->timestamps();
         });
     }
