@@ -53,7 +53,7 @@ class User extends Authenticatable
         return $this->hasMany(UserProduct::class);
     }
 
-    //public function history(){
-    //    return $this->hasMany(History::class);
-    //}
+    public function history(){
+        return $this->hasMany(History::class);
+    }
 }
