@@ -81,17 +81,17 @@ class AccountController extends Controller
     {
         $account = Account::findOrFail($id);
 
-        if ($request->get('var1') != NULL){
-            $account->cardNumber = $request->get('var1');
+        if ($request->get('cardNumber') != NULL){
+            $account->cardNumber = $request->get('cardNumber');
         }
-        if ($request->get('var2') != NULL){
-            $account->cardType = $request->get('var2');
+        if ($request->get('cardType') != NULL){
+            $account->cardType = $request->get('cardType');
         }
-        if ($request->get('var3') != NULL){
-            $account->bank = $request->get('var3');
+        if ($request->get('bank') != NULL){
+            $account->bank = $request->get('bank');
         }
-        if ($request->get('var4') != NULL){
-            $account->visible = $request->get('var4');
+        if ($request->get('visible') != NULL){
+            $account->visible = $request->get('visible');
         }
 
         $account->save();

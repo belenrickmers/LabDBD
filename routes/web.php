@@ -21,17 +21,20 @@ Route::get('/', function () {
 Route::get('/account/all', 'AccountController@index');
 Route::get('/account/{id}', 'AccountController@show');
 Route::post('/account', 'AccountController@store');
-Route::post('/account/delete/{id}', 'AccountController@destroy');
+Route::put('/account/{id}', 'AccountController@update');
+Route::delete('/account/delete/{id}', 'AccountController@destroy');
 
 //Rutas de categorias
 Route::get('/category/all', 'CategoryController@index');
 Route::get('/category/{id}', 'CategoryController@show');
 Route::post('/category', 'CategoryController@store');
-Route::post('/category/delete/{id}', 'CategoryController@destroy');
+Route::put('/category/{id}', 'CategoryController@update');
+Route::delete('/category/delete/{id}', 'CategoryController@destroy');
 
 //Rutas de historial
 Route::get('/history/all', 'HistoryController@index');
 Route::get('/history/{id}', 'HistoryController@show');
 Route::post('/history', 'HistoryController@store');
-Route::post('/history/delete/{id}', 'HistoryController@destroy');
+Route::put('/history/{id}', 'HistoryController@update');
+Route::delete('/history/delete/{id}', 'HistoryController@destroy');
 

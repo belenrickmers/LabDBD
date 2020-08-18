@@ -79,11 +79,11 @@ class HistoryController extends Controller
     {
         $history = History::findOrFail($id);
 
-        if ($request->get('var1') != NULL){
-            $history->directAction = $request->get('var1');
+        if ($request->get('directAction') != NULL){
+            $history->directAction = $request->get('directAction');
         }
-        if ($request->get('var2') != NULL){
-            $history->visible = $request->get('var2');
+        if ($request->get('visible') != NULL){
+            $history->visible = $request->get('visible');
         }
         
         $history->save();

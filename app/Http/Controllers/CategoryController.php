@@ -80,14 +80,14 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        if ($request->get('var1') != NULL){
-            $category->categoryName = $request->get('var1');
+        if ($request->get('categoryName') != NULL){
+            $category->categoryName = $request->get('categoryName');
         }
-        if ($request->get('var2') != NULL){
-            $category->categoryDescription = $request->get('var2');
+        if ($request->get('categoryDescription') != NULL){
+            $category->categoryDescription = $request->get('categoryDescription');
         }
-        if ($request->get('var3') != NULL){
-            $category->visible = $request->get('var3');
+        if ($request->get('visible') != NULL){
+            $category->visible = $request->get('visible');
         }
         
         $category->save();
