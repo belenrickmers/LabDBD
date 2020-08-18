@@ -72,3 +72,17 @@ Route::get('/product/{id}', 'ProductController@show');
 Route::post('/product', 'ProductController@store');
 Route::put('/product/{id}', 'ProductController@update');
 Route::delete('/product/delete/{id}', 'ProductController@destroy');
+
+//Rutas de usuario
+Route::get('/user/all','UserController@index');
+Route::get('/user/{id}','UserController@show');
+Route::post('/user','UserController@store');
+Route::put('/user/{id}', 'UserController@update');
+Route::delete('/user/delete/{id}', 'UserController@destroy');
+
+//Rutas de transaccion
+Route::get('/transaction/all','TransactionController@index');
+Route::get('/transaction/{id}','TransactionController@show');
+Route::post('/transaction','TransactionController@store');
+Route::put('/transaction/{id}', 'TransactionController@update');
+Route::delete('/transaction/delete/{id}', 'TransactionController@destroy');
