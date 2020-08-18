@@ -82,7 +82,7 @@ class RoleController extends Controller
             $role->roleName = $request->get('roleName');
         }
         if ($request->get('roleDescription') != NULL){
-            $role->rate = $request->get('roleDescription');;
+            $role->roleDescription = $request->get('roleDescription');;
         }
         if ($request->get('visible') != NULL){
             $role->visible = $request->get('visible');
