@@ -26,6 +26,8 @@ class CreateUsersTable extends Migration
             $table->boolean('visible');
             $table->rememberToken();
             $table->timestamps();
+            //referencia las foraneas
+            $table->foreign('idRole')->references('id')->on('roles');
         });
     }
 
