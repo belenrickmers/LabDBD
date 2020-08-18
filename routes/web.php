@@ -38,6 +38,16 @@ Route::post('/history', 'HistoryController@store');
 Route::put('/history/{id}', 'HistoryController@update');
 Route::delete('/history/delete/{id}', 'HistoryController@destroy');
 
+//Rutas de pagos
+Route::get('/payment/all', 'PaymentController@index');
+Route::get('/payment/{id}', 'PaymentController@show');
+Route::post('/payment', 'PaymentController@store');
+Route::put('/payment/{id}', 'PaymentController@update');
+Route::delete('/payment/delete/{id}', 'PaymentController@destroy');
+
+Route::delete('/role/delete/{id}', 'RoleController@destroy');
+
+Route::delete('/product/delete/{id}', 'ProductController@destroy');
 
 //Rutas de Review
 Route::get('/review/all', 'ReviewController@index');
@@ -52,3 +62,16 @@ Route::get('/role/{id}', 'RoleController@show');
 Route::post('/role/new', 'RoleController@store');
 Route::put('/role/update/{id}', 'RoleController@update');
 Route::delete('/role/delete/{id}', 'RoleController@destroy');
+//Rutas de permisos
+Route::get('/permission/all', 'PermissionController@index');
+Route::get('/permission/{id}', 'PermissionController@show');
+Route::post('/permission', 'PermissionController@store');
+Route::put('/permission/{id}', 'PermissionController@update');
+Route::delete('/permission/delete/{id}', 'PermissionController@destroy');
+
+//Rutas de productos
+Route::get('/product/all', 'ProductController@index');
+Route::get('/product/{id}', 'ProductController@show');
+Route::post('/product', 'ProductController@store');
+Route::put('/product/{id}', 'ProductController@update');
+Route::delete('/product/delete/{id}', 'ProductController@destroy');
