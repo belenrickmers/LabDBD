@@ -12,9 +12,17 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //metodo index que muestra todas las tuplas presentes, sin importar si estan visibles o no
+    public function indexAll()
     {
         $permission = Permission::all();
+        return response()->json($permission);
+    }
+
+    //metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
+    {
+        $permission = Permission::all()->where('visible', '==', true);
         return response()->json($permission);
     }
 
@@ -103,6 +111,7 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //metodo delete que borra realmente la tupla
     public function deleteData($id)
     {
         $permission = Permission::find($id);
@@ -110,6 +119,7 @@ class PermissionController extends Controller
         return "El permiso fue eliminado";
     }
 
+    //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
     public function deleteVisibility($id)
     {
         $permission = Permission::find($id);

@@ -12,10 +12,18 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //metodo index que muestra todas las tuplas presentes, sin importar si estan visibles o no
+    public function indexAll()
+    {
+        $role = Role::all();
+        return response()->json($role);
+    }
+
+    //metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
     {
         $role = Role::all()->where('visible', '==', true);
-        return $role;
+        return response()->json($role);
     }
 
     /**
@@ -98,6 +106,8 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //metodo delete que borra realmente la tupla
     public function deleteData($id)
     {
         $role = Role::find($id);
@@ -105,6 +115,7 @@ class RoleController extends Controller
         return "Se ha eliminado el rol";
     }
 
+    //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
     public function deleteVisibility($id)
     {
         $role = Role::find($id);

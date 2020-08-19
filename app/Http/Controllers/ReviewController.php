@@ -12,10 +12,17 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //metodo index que muestra todas las tuplas presentes, sin importar si estan visibles o no
+    public function indexAll()
+    {
+        $review = Review::all();
+        return response()->json($review);
+    }
+    //metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
     {
         $review = Review::all()->where('visible', '==', true);
-        return $review;
+        return response()->json($review);
     }
 
     /**
@@ -98,6 +105,7 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //metodo delete que borra realmente la tupla
     public function deleteData($id)
     {
         $review = Review::find($id);
@@ -105,6 +113,7 @@ class ReviewController extends Controller
         return "Se ha eliminado el review";
     }
 
+    //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
     public function deleteVisibility($id)
     {
         $review = Review::find($id);
