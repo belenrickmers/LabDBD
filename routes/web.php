@@ -50,21 +50,31 @@ Route::get('/review/all', 'ReviewController@index');
 Route::get('/review/{id}', 'ReviewController@show');
 Route::post('/review/new', 'ReviewController@store');
 Route::put('/review/update/{id}', 'ReviewController@update');
-Route::delete('/review/delete/{id}', 'ReviewController@destroy');
+Route::delete('/review/delete/{id}', 'ReviewController@deleteData');
+Route::put('/review/deletevis/{id}', 'ReviewController@deleteVisibility');
 
 //Rutas de Role
 Route::get('/role/all', 'RoleController@index');
 Route::get('/role/{id}', 'RoleController@show');
 Route::post('/role/new', 'RoleController@store');
 Route::put('/role/update/{id}', 'RoleController@update');
-Route::delete('/role/delete/{id}', 'RoleController@destroy');
+Route::delete('/role/delete/{id}', 'RoleController@deleteData');
+Route::put('/role/deletevis/{id}', 'RoleController@deleteVisibility');
+
+//Rutas de UserProduct
+Route::get('/userproduct/all', 'UserProductController@index');
+Route::get('/userproduct/{id}', 'UserProductController@show');
+Route::post('/userproduct/new', 'UserProductController@store');
+Route::put('/userproduct/update/{id}', 'UserProductController@update');
+Route::delete('/userproduct/delete/{id}', 'UserProductController@deleteData');
 
 //Rutas de permisos
 Route::get('/permission/all', 'PermissionController@index');
 Route::get('/permission/{id}', 'PermissionController@show');
 Route::post('/permission', 'PermissionController@store');
 Route::put('/permission/{id}', 'PermissionController@update');
-Route::delete('/permission/delete/{id}', 'PermissionController@destroy');
+Route::delete('/permission/delete/{id}', 'PermissionController@deleteData');
+Route::put('/permission/deletevis/{id}', 'PermissionController@deleteVisibility');
 
 //Rutas de productos
 Route::get('/product/all', 'ProductController@index');

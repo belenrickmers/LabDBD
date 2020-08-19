@@ -103,10 +103,18 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteData($id)
     {
         $permission = Permission::find($id);
         $permission->delete();
+        return "El permiso fue eliminado";
+    }
+
+    public function deleteVisibility($id)
+    {
+        $permission = Permission::find($id);
+        $permission->visible = false;
+        $permission->save();
         return "El permiso fue eliminado";
     }
 }

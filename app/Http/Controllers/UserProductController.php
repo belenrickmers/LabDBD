@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Role;
+use App\UserProduct;
 
-class RoleController extends Controller
+class UserProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $role = Role::all()->where('visible', '==', true);
-        return $role;
+        $userproduct = UserProduct::all();
+        return $userproduct;
     }
 
     /**
@@ -36,12 +36,11 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $role = new Role();
-        $role->roleName = $request->roleName;
-        $role->roleDescription = $request->roleDescription;
-        $role->visible = true;
-        $role->save();
-        return "Se ha creado un rol";
+        $userproduct = new UserProduct();
+        $userproduct->idUser = $request->idUser;
+        $userproduct->idProduct = $request->idProduct;
+        $userproduct->save();
+        return "Se ha creado un UserProduct";
     }
 
     /**
@@ -52,8 +51,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Role::find($id);
-        return $role;
+        $userproduct = UserProduct::find($id);
+        return $userproduct; 
     }
 
     /**
@@ -76,20 +75,17 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $role = Role::findOrFail($id);
+        $userproduct = UserProduct::findOrFail($id);
 
-        if ($request->get('roleName') != NULL){
-            $role->roleName = $request->get('roleName');
+        if ($request->get('idUser') != NULL){
+            $userproduct->idUser = $request->get('idUser');
         }
-        if ($request->get('roleDescription') != NULL){
-            $role->roleDescription = $request->get('roleDescription');;
+        if ($request->get('idProduct') != NULL){
+            $userproduct->idProduct = $request->get('idProduct');;
         }
-        if ($request->get('visible') != NULL){
-            $role->visible = $request->get('visible');
-        }
-        $role->save();
+        $userproduct->save();
     
-        return response()->json($role);
+        return response()->json($userproduct);
     }
 
     /**
@@ -100,18 +96,8 @@ class RoleController extends Controller
      */
     public function deleteData($id)
     {
-        $role = Role::find($id);
-        $role->delete();
-        return "Se ha eliminado el rol";
+        $userproduct = UserProduct::find($id);
+        $userproduct->delete();
+        return "Se ha eliminado el UserProduct";
     }
-
-    public function deleteVisibility($id)
-    {
-        $role = Role::find($id);
-        $role->visible = false;
-        $role->save();
-        return "Se ha eliminado el rol";
-    }
-
-    
 }
