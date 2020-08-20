@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Account;
+use App\PermissionRole;
 
-class AccountController extends Controller
+class PermissionRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,15 +14,16 @@ class AccountController extends Controller
      */
     public function indexAll()
     {
-        $account = Account::all();
-        return response()->json($account);
+        $permissionrole = PermissionRole::all();
+        return response()->json($permissionrole);
     }
+
 
     //metodo index que muestra solo las tuplas que tienen visibilidad true
     public function indexVisible()
     {
-        $account = Account::all()->where('visible', '==', true);
-        return response()->json($account);
+        $permissionrole = PermissionRole::all()->where('visible', '==', true);
+        return response()->json($permissionrole);
     }
 
     /**
@@ -43,13 +44,10 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        $account = new Account();
-        $account->idUser = $request->idUser;
-        $account->cardNumber = $request->cardNumber;
-        $account->cardType = $request->cardType;
-        $account->bank = $request->bank;
-        $account->visible = $request->visible;
-        $account->save();
+        $permissionrole = new PermissionRole();
+        $permissionrole->idPermission = $request->idPermission;
+        $permissionrole->idRole = $request->idRole;
+        $permissionrole->save();
         return response()->json([
             "message" => "record created"
         ], 201);
@@ -63,8 +61,8 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        $account = Account::find($id);
-        return $account;
+        $permissionrole = PermissionRole::find($id);
+        return $permissionrole;
     }
 
     /**
@@ -87,24 +85,18 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $account = Account::findOrFail($id);
+        $permissionrole = PermissionRole::findOrFail($id);
 
-        if ($request->get('cardNumber') != NULL){
-            $account->cardNumber = $request->get('cardNumber');
+        if ($request->get('idPermission') != NULL){
+            $permissionrole->idPermission = $request->get('idPermission');
         }
-        if ($request->get('cardType') != NULL){
-            $account->cardType = $request->get('cardType');
-        }
-        if ($request->get('bank') != NULL){
-            $account->bank = $request->get('bank');
-        }
-        if ($request->get('visible') != NULL){
-            $account->visible = $request->get('visible');
+        if ($request->get('idRole') != NULL){
+            $permissionrole->idRole = $request->get('idRole');
         }
 
-        $account->save();
+        $permissionrole->save();
 
-        return response()->json($account);
+        return response()->json($permissionrole);
     }
 
     /**
@@ -115,17 +107,17 @@ class AccountController extends Controller
      */
     public function deleteData($id)
     {
-        $account = Account::find($id);
-        $account->delete();
-        return "La cuenta ha sido eliminada";
+        $permissionrole = PermissionRole::find($id);
+        $permissionrole->delete();
+        return "El Permiso del Role fue eliminado";
     }
 
     //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
     public function deleteVisibility($id)
     {
-       $account = Account::find($id);
-       $account->visible = false;
-       $account->save();
-       return "La cuenta ha sido eliminada";
-    } 
+       $permissionrole = PermissionRole::find($id);
+       $permissionrole->visible = false;
+       $permissionrole->save();
+       return "El Permiso del Role fue eliminado";
+    }
 }

@@ -12,9 +12,16 @@ class HistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexAll()
     {
         $history = History::all();
+        return response()->json($history);
+    }
+
+    //metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
+    {
+        $history = History::all()->where('visible', '==', true);
         return response()->json($history);
     }
 
@@ -37,6 +44,7 @@ class HistoryController extends Controller
     public function store(Request $request)
     {
         $history = new History();
+        $history->idUser = $request->idUser;
         $history->directAction = $request->directAction;
         $history->visible = $request->visible;
         $history->save();
@@ -97,10 +105,19 @@ class HistoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteData($id)
     {
         $history = History::find($id);
         $history->delete();
+        return "El historial ha sido eliminado";
+    }
+
+    //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
+    public function deleteVisibility($id)
+    {
+        $history = History::find($id);
+        $history->visible = false;
+        $history->save();
         return "El historial ha sido eliminado";
     }
 }

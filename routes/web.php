@@ -18,25 +18,31 @@ Route::get('/', function () {
 });
 
 //Rutas de cuentas
-Route::get('/account/all', 'AccountController@index');
+Route::get('/account/all', 'AccountController@indexAll');
+Route::get('/account/allvisible', 'AccountController@indexVisible');
 Route::get('/account/{id}', 'AccountController@show');
-Route::post('/account', 'AccountController@store');
-Route::put('/account/{id}', 'AccountController@update');
-Route::delete('/account/delete/{id}', 'AccountController@destroy');
+Route::post('/account/new', 'AccountController@store');
+Route::put('/account/update/{id}', 'AccountController@update');
+Route::delete('/account/delete/{id}', 'AccountController@deleteData');
+Route::put('/account/deletevis/{id}', 'AccountController@deleteVisibility');
 
 //Rutas de categorias
-Route::get('/category/all', 'CategoryController@index');
+Route::get('/category/all', 'CategoryController@indexAll');
+Route::get('/category/allvisible', 'CategoryController@indexVisible');
 Route::get('/category/{id}', 'CategoryController@show');
-Route::post('/category', 'CategoryController@store');
-Route::put('/category/{id}', 'CategoryController@update');
-Route::delete('/category/delete/{id}', 'CategoryController@destroy');
+Route::post('/category/new', 'CategoryController@store');
+Route::put('/category/update/{id}', 'CategoryController@update');
+Route::delete('/category/delete/{id}', 'CategoryController@deleteData');
+Route::put('/category/deletevis/{id}', 'CategoryController@deleteVisibility');
 
 //Rutas de historial
-Route::get('/history/all', 'HistoryController@index');
+Route::get('/history/all', 'HistoryController@indexAll');
+Route::get('/history/allvisible', 'HistoryController@indexVisible');
 Route::get('/history/{id}', 'HistoryController@show');
-Route::post('/history', 'HistoryController@store');
-Route::put('/history/{id}', 'HistoryController@update');
-Route::delete('/history/delete/{id}', 'HistoryController@destroy');
+Route::post('/history/new', 'HistoryController@store');
+Route::put('/history/update/{id}', 'HistoryController@update');
+Route::delete('/history/delete/{id}', 'HistoryController@deleteData');
+Route::put('/history/deletevis/{id}', 'HistoryController@deleteVisibility');
 
 //Rutas de pagos
 Route::get('/payment/all', 'PaymentController@index');
@@ -80,11 +86,13 @@ Route::delete('/permission/delete/{id}', 'PermissionController@deleteData');
 Route::put('/permission/deletevis/{id}', 'PermissionController@deleteVisibility');
 
 //Rutas de productos
-Route::get('/product/all', 'ProductController@index');
+Route::get('/product/all', 'ProductController@indexAll');
+Route::get('/product/allvisible', 'ProductController@indexVisible');
 Route::get('/product/{id}', 'ProductController@show');
-Route::post('/product', 'ProductController@store');
-Route::put('/product/{id}', 'ProductController@update');
-Route::delete('/product/delete/{id}', 'ProductController@destroy');
+Route::post('/product/new', 'ProductController@store');
+Route::put('/product/update/{id}', 'ProductController@update');
+Route::delete('/product/delete/{id}', 'ProductController@deleteData');
+Route::put('/product/deletevis/{id}', 'ProductController@deleteVisibility');
 
 //Rutas de usuario
 Route::get('/user/all','UserController@index');
@@ -99,3 +107,13 @@ Route::get('/transaction/{id}','TransactionController@show');
 Route::post('/transaction','TransactionController@store');
 Route::put('/transaction/{id}', 'TransactionController@update');
 Route::delete('/transaction/delete/{id}', 'TransactionController@destroy');
+
+//Rutas de Permiso-Rol
+Route::get('/permissionrole/all', 'PermissionRoleController@indexAll');
+
+Route::get('/permissionrole/{id}', 'PermissionRoleController@show');
+Route::post('/permissionrole/new', 'PermissionRoleController@store');
+Route::put('/permissionrole/update/{id}', 'PermissionRoleController@update');
+Route::delete('/permissionrole/delete/{id}', 'PermissionRoleController@deleteData');
+//Route::get('/permissionrole/allvisible', 'PermissionRoleController@indexVisible');
+//Route::put('/permissionrole/deletevis/{id}', 'PermissionRoleController@deleteVisibility');

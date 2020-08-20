@@ -12,9 +12,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexAll()
     {
         $product = Product::all();
+        return response()->json($product);
+    }
+
+
+    //metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
+    {
+        $product = Product::all()->where('visible', '==', true);
         return response()->json($product);
     }
 
@@ -85,36 +93,36 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        if ($request->get('var1') != NULL){
-            $product->productName = $request->get('var1');
+        if ($request->get('productName') != NULL){
+            $product->productName = $request->get('productName');
         }
 
-        if ($request->get('var2') != NULL){
-            $product->price = $request->get('var2');
+        if ($request->get('price') != NULL){
+            $product->price = $request->get('price');
         }
 
-        if ($request->get('var3') != NULL){
-            $product->productDescription = $request->get('var3');
+        if ($request->get('productDescription') != NULL){
+            $product->productDescription = $request->get('productDescription');
         }
 
-        if ($request->get('var4') != NULL){
-            $product->region = $request->get('var4');
+        if ($request->get('region') != NULL){
+            $product->region = $request->get('region');
         }
 
-        if ($request->get('var5') != NULL){
-            $product->comuna = $request->get('var5');
+        if ($request->get('comuna') != NULL){
+            $product->comuna = $request->get('comuna');
         }
 
-        if ($request->get('var6') != NULL){
-            $product->availability = $request->get('var6');
+        if ($request->get('availability') != NULL){
+            $product->availability = $request->get('availability');
         }
 
-        if ($request->get('var7') != NULL){
-            $product->reviewAverage = $request->get('var7');
+        if ($request->get('reviewAverage') != NULL){
+            $product->reviewAverage = $request->get('reviewAverage');
         }
 
-        if ($request->get('var8') != NULL){
-            $product->visible = $request->get('var7');
+        if ($request->get('visible') != NULL){
+            $product->visible = $request->get('visible');
         }
 
         $product->save();
@@ -128,10 +136,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteData($id)
     {
         $product = Product::find($id);
         $product->delete();
-        return "El metodo de pago fue eliminado";
+        return "El método de pago ha sido eliminado";
     }
+
+    //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
+    public function deleteVisibility($id)
+    {
+       $product = Product::find($id);
+       $product->visible = false;
+       $product->save();
+       return "El método de pago ha sido eliminado";
+    } 
 }

@@ -12,9 +12,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexAll()
     {
         $category = Category::all();
+        return response()->json($category);
+    }
+
+    //metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
+    {
+        $category = Category::all()->where('visible', '==', true);
         return response()->json($category);
     }
 
@@ -101,10 +108,19 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteData($id)
     {
         $category = Category::find($id);
         $category->delete();
+        return "La categoría ha sido eliminada";
+    }
+
+    //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
+    public function deleteVisibility($id)
+    {
+        $category = Category::find($id);
+        $category->visible = false;
+        $category->save();
         return "La categoría ha sido eliminada";
     }
 }
