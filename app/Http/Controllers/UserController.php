@@ -12,9 +12,16 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //Metodo index que muestra todas las tuplas presentes, sin importar si estan visibles o no
+    public function indexAll()
     {
         $user = User::all();
+        return response()->json($user);
+    }
+    //Metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
+    {
+        $user = User::all()->where('visible', '==', true);
         return response()->json($user);
     }
 
@@ -43,6 +50,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->contactNumber = $request->contactNumber;
+        $user->idRole = $request->idRole;
         $user->visible = $request->visible;
         $user->save();
         return response()->json([
@@ -105,6 +113,9 @@ class UserController extends Controller
         if ($request->get('visible') != NULL){
             $user->visible = $request->get('visible');
         }
+        if ($request->get('idRole') != NULL){
+            $user->idRole = $request->get('idRole');
+        }
         
         $user->save();
 
@@ -117,10 +128,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    //Metodo delete que borra realmente la tupla
+    public function deleteData($id)
     {
         $user = User::find($id);
         $user->delete();
+        return "El usuario fue eliminado.";
+    }
+    //Metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
+    public function deleteVisibility($id)
+    {
+        $user = User::find($id);
+        $user->visible = false;
+        $user->save();
         return "El usuario fue eliminado.";
     }
 }

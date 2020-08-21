@@ -12,9 +12,16 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //Metodo index que muestra todas las tuplas presentes, sin importar si estan visibles o no
+    public function indexAll()
     {
         $transaction = Transaction::all();
+        return response()->json($transaction);
+    }
+    //Metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
+    {
+        $transaction = Transaction::all()->where('visible', '==', true);
         return response()->json($transaction);
     }
 
@@ -40,6 +47,10 @@ class TransactionController extends Controller
         $transaction->rentTime = $request->rentTime;
         $transaction->tsTransaction = $request->tsTransaction;
         $transaction->visible = $request->visible;
+        $transaction->idUser = $request->idUser;
+        $transaction->idProduct = $request->idProduct;
+        $transaction->idReview = $request->idReview;
+        $transaction->idPayment = $request->idPayment;
         $transaction->save();
         return response()->json([
             "message" => "record created"
@@ -89,6 +100,18 @@ class TransactionController extends Controller
         if ($request->get('visible') != NULL){
             $transaction->visible = $request->get('visible');
         }
+        if ($request->get('idUser') != NULL){
+            $transaction->idUser = $request->get('idUser');
+        }
+        if ($request->get('idProduct') != NULL){
+            $transaction->idProduct = $request->get('idProduct');
+        }
+        if ($request->get('idReview') != NULL){
+            $transaction->idReview = $request->get('idReview');
+        }
+        if ($request->get('idPayment') != NULL){
+            $transaction->idPayment = $request->get('idPayment');
+        }
         
         $transaction->save();
 
@@ -101,10 +124,19 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    //Metodo delete que borra realmente la tupla
+    public function deleteData($id)
     {
         $transaction = Transaction::find($id);
         $transaction->delete();
+        return "La transacción fue eliminado.";
+    }
+    //Metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
+    public function deleteVisibility($id)
+    {
+        $transaction = Transaction::find($id);
+        $transaction->visible = false;
+        $transaction->save();
         return "La transacción fue eliminado.";
     }
 }

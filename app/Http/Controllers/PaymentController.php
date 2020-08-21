@@ -12,12 +12,18 @@ class PaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //Metodo index que muestra todas las tuplas presentes, sin importar si estan visibles o no
+    public function indexAll()
     {
         $payment = Payment::all();
         return response()->json($payment);
     }
-
+    //Metodo index que muestra solo las tuplas que tienen visibilidad true
+    public function indexVisible()
+    {
+        $payment = Payment::all()->where('visible', '==', true);
+        return response()->json($payment);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -81,20 +87,20 @@ class PaymentController extends Controller
     {
         $payment = Payment::findOrFail($id);
 
-        if ($request->get('var1') != NULL){
-            $payment->payMethod = $request->get('var1');
+        if ($request->get('payMethod') != NULL){
+            $payment->payMethod = $request->get('payMethod');
         }
 
-        if ($request->get('var2') != NULL){
-            $payment->paymentState = $request->get('var2');
+        if ($request->get('paymentState') != NULL){
+            $payment->paymentState = $request->get('paymentState');
         }
 
-        if ($request->get('var3') != NULL){
-            $payment->tsPayment = $request->get('var3');
+        if ($request->get('tsPayment') != NULL){
+            $payment->tsPayment = $request->get('tsPayment');
         }
 
-        if ($request->get('var4') != NULL){
-            $payment->visible = $request->get('var4');
+        if ($request->get('visible') != NULL){
+            $payment->visible = $request->get('visible');
         }
 
         $payment->save();
@@ -108,11 +114,19 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    //Metodo delete que borra realmente la tupla
+    public function deleteData($id)
     {
         $payment = Payment::find($id);
         $payment->delete();
         return "El metodo de pago fue eliminado";
     }
-
+    //Metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
+    public function deleteVisibility($id)
+    {
+        $payment = Payment::find($id);
+        $payment->visible = false;
+        $payment->save();
+        return "El metodo de pago fue eliminado";
+    }
 }

@@ -45,11 +45,13 @@ Route::delete('/history/delete/{id}', 'HistoryController@deleteData');
 Route::put('/history/deletevis/{id}', 'HistoryController@deleteVisibility');
 
 //Rutas de pagos
-Route::get('/payment/all', 'PaymentController@index');
+Route::get('/payment/all', 'PaymentController@indexAll');
+Route::get('/payment/allvisible', 'PaymentController@indexVisible');
 Route::get('/payment/{id}', 'PaymentController@show');
-Route::post('/payment', 'PaymentController@store');
-Route::put('/payment/{id}', 'PaymentController@update');
-Route::delete('/payment/delete/{id}', 'PaymentController@destroy');
+Route::post('/payment/new', 'PaymentController@store');
+Route::put('/payment/update/{id}', 'PaymentController@update');
+Route::delete('/payment/delete/{id}', 'PaymentController@deleteData');
+Route::delete('/payment/deletevis/{id}', 'PaymentController@deleteVisibility');
 
 //Rutas de Review
 Route::get('/review/all', 'ReviewController@indexAll');
@@ -80,8 +82,8 @@ Route::delete('/userproduct/delete/{id}', 'UserProductController@deleteData');
 Route::get('/permission/all', 'PermissionController@indexAll');
 Route::get('/permission/allvisible', 'PermissionController@indexVisible');
 Route::get('/permission/{id}', 'PermissionController@show');
-Route::post('/permission', 'PermissionController@store');
-Route::put('/permission/{id}', 'PermissionController@update');
+Route::post('/permission/new', 'PermissionController@store');
+Route::put('/permission/update/{id}', 'PermissionController@update');
 Route::delete('/permission/delete/{id}', 'PermissionController@deleteData');
 Route::put('/permission/deletevis/{id}', 'PermissionController@deleteVisibility');
 
@@ -95,17 +97,20 @@ Route::delete('/product/delete/{id}', 'ProductController@deleteData');
 Route::put('/product/deletevis/{id}', 'ProductController@deleteVisibility');
 
 //Rutas de usuario
-Route::get('/user/all','UserController@index');
+Route::get('/user/all','UserController@indexAll');
+Route::get('/user/allvisible', 'UserController@indexVisible');
 Route::get('/user/{id}','UserController@show');
-Route::post('/user','UserController@store');
-Route::put('/user/{id}', 'UserController@update');
-Route::delete('/user/delete/{id}', 'UserController@destroy');
+Route::post('/user/new','UserController@store');
+Route::put('/user/update/{id}', 'UserController@update');
+Route::delete('/user/delete/{id}', 'UserController@deleteData');
+Route::delete('/user/deletevis/{id}', 'UserController@deleteVisibility');
 
 //Rutas de transaccion
-Route::get('/transaction/all','TransactionController@index');
+Route::get('/transaction/all','TransactionController@indexAll');
+Route::get('/transaction/allvisible', 'TransactionController@indexVisible');
 Route::get('/transaction/{id}','TransactionController@show');
-Route::post('/transaction','TransactionController@store');
-Route::put('/transaction/{id}', 'TransactionController@update');
+Route::post('/transaction/new','TransactionController@store');
+Route::put('/transaction/update/{id}', 'TransactionController@update');
 Route::delete('/transaction/delete/{id}', 'TransactionController@destroy');
 
 //Rutas de Permiso-Rol
@@ -117,3 +122,13 @@ Route::put('/permissionrole/update/{id}', 'PermissionRoleController@update');
 Route::delete('/permissionrole/delete/{id}', 'PermissionRoleController@deleteData');
 //Route::get('/permissionrole/allvisible', 'PermissionRoleController@indexVisible');
 //Route::put('/permissionrole/deletevis/{id}', 'PermissionRoleController@deleteVisibility');
+
+Route::delete('/transaction/delete/{id}', 'TransactionController@deleteData');
+Route::delete('/transaction/deletevis/{id}', 'TransactionController@deleteVisibility');
+
+//Rutas de CategoryProduct
+Route::get('/categoryproduct/all', 'CategoryProductController@index');
+Route::get('/categoryproduct/{id}', 'CategoryProductController@show');
+Route::post('/categoryproduct/new', 'CategoryProductController@store');
+Route::put('/categoryproduct/update/{id}', 'CategoryProductController@update');
+Route::delete('/categoryproduct/delete/{id}', 'CategoryProductController@deleteData');
