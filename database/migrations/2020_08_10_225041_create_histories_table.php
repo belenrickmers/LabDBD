@@ -15,12 +15,12 @@ class CreateHistoriesTable extends Migration
     {
         Schema::create('histories', function (Blueprint $table) {
             $table->id('id')->autoincrement();
-            $table->unsignedBigInteger('idUser');
-            $table->string('directAction', 250);
+            $table->unsignedBigInteger('id_user');
+            $table->string('direct_action', 250);
             $table->boolean('visible');
             $table->timestamps();
             //llaves foraneas
-            $table->foreign('idUser')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
