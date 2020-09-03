@@ -15,8 +15,10 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id('id')->autoincrement();
-            $table->string('comment', 250); //modificado de 150 a 250
-            $table->integer('rate'); //valoracion
+            //Se dejan comment y rate como nullable ya que para crear un review puede
+            //ingresarse uno de los dos o ambos
+            $table->string('comment', 250)->nullable(); //modificado de 150 a 250
+            $table->integer('rate')->nullable(); //valoracion
             $table->boolean('visible');
             $table->timestamps();
         });

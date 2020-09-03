@@ -43,12 +43,20 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $review = new Review();
-        $review->comment = $request->comment;
-        $review->rate = $request->rate;
-        $review->visible = true;
-        $review->save();
-        return "Se ha creado un review";
+        //Solo pueden ser uno nulo o ambos no nulos
+        if($request->comment == NULL and $request->rate == NULL){
+            return "No se pudo crear el review. No pueden ser los dos campos nulos.";
+        }else{
+            if(strlen($request->comment) > 250){
+                return "No se pudo crear el review. El comentario no puede tener mas de 250 caracteres.";
+            }
+            $review = new Review();
+            $review->comment = $request->comment;
+            $review->rate = $request->rate;
+            $review->visible = true;
+            $review->save();
+            return "Se ha creado un review.";
+        }
     }
 
     /**
@@ -60,6 +68,9 @@ class ReviewController extends Controller
     public function show($id)
     {
         $review = Review::find($id);
+        if($review == NULL){
+            return "No se ha encontrado el review.";
+        }
         return $review;
     }
 
@@ -83,9 +94,15 @@ class ReviewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $review = Review::findOrFail($id);
-
+        //No se deja como findOrFail para entregar un mensaje al usuario en caso de que no exista el id
+        $review = Review::find($id);
+        if($review == NULL){
+            return "No se ha encontrado el review.";
+        }
         if ($request->get('comment') != NULL){
+            if(strlen($request->get('comment')) > 250){
+                return "El comentario no puede tener mas de 250 caracteres.";
+            }
             $review->comment = $request->get('comment');
         }
         if ($request->get('rate') != NULL){
@@ -109,16 +126,22 @@ class ReviewController extends Controller
     public function deleteData($id)
     {
         $review = Review::find($id);
+        if($review == NULL){
+            return "No se ha encontrado el review.";
+        }
         $review->delete();
-        return "Se ha eliminado el review";
+        return "Se ha eliminado el review.";
     }
 
     //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
     public function deleteVisibility($id)
     {
         $review = Review::find($id);
+        if($review == NULL){
+            return "No se ha encontrado el review.";
+        }
         $review->visible = false;
         $review->save();
-        return "Se ha eliminado el review";
+        return "Se ha eliminado el review.";
     }
 }

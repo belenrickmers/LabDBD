@@ -44,12 +44,23 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->roleName == NULL and $request->roleDescription == NULL){
+            return "Los campos no pueden ser nulos. Por favor rellene los dos campos.";
+        }elseif($request->roleName == NULL){
+            return "El campo nombre no puede ser nulo. Por favor rellene ambos campos.";
+        }elseif($request->roleDescription == NULL){
+            return "El campo descripcion no puede ser nulo. Por favor rellene ambos campos.";
+        }elseif(strlen($request->roleName) > 20){
+            return "La cantidad de caracteres del campo nombre excede el maximo de 20 caracteres.";
+        }elseif(strlen($request->roleDescription) > 200){
+            return "La cantidad de caracteres del campo descripcion excede el maximo de 200 caracteres.";
+        }
         $role = new Role();
         $role->roleName = $request->roleName;
         $role->roleDescription = $request->roleDescription;
         $role->visible = true;
         $role->save();
-        return "Se ha creado un rol";
+        return "Se ha creado un rol.";
     }
 
     /**
@@ -61,6 +72,9 @@ class RoleController extends Controller
     public function show($id)
     {
         $role = Role::find($id);
+        if($role == NULL){
+            return "No se ha encontrado el rol.";
+        }
         return $role;
     }
 
@@ -84,12 +98,21 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $role = Role::findOrFail($id);
-
+        //No se deja como findOrFail para entregar un mensaje al usuario en caso de que no exista el id
+        $role = Role::find($id);
+        if($role == NULL){
+            return "No se ha encontrado el rol.";
+        }
         if ($request->get('roleName') != NULL){
+            if(strlen($request->get('roleName')) >  20){
+                return "La cantidad de caracteres del campo nombre excede el maximo de 20 caracteres.";
+            }
             $role->roleName = $request->get('roleName');
         }
         if ($request->get('roleDescription') != NULL){
+            if(strlen($request->get('roleDescription')) > 200){
+                return "La cantidad de caracteres del campo descripcion excede el maximo de 200 caracteres.";
+            }
             $role->roleDescription = $request->get('roleDescription');;
         }
         if ($request->get('visible') != NULL){
@@ -111,17 +134,23 @@ class RoleController extends Controller
     public function deleteData($id)
     {
         $role = Role::find($id);
+        if($role == NULL){
+            return "No se ha encontrado el rol.";
+        }
         $role->delete();
-        return "Se ha eliminado el rol";
+        return "Se ha eliminado el rol.";
     }
 
     //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
     public function deleteVisibility($id)
     {
         $role = Role::find($id);
+        if($role == NULL){
+            return "No se ha encontrado el rol.";
+        }
         $role->visible = false;
         $role->save();
-        return "Se ha eliminado el rol";
+        return "Se ha eliminado el rol.";
     }
 
     
