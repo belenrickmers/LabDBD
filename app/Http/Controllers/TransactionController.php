@@ -42,7 +42,13 @@ class TransactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    
+        if($transaction->rentTime == NULL){
+            return "Por favor seleccione el tiempo de arriendo del producto.";}
+        
+        //elseif($request->tsTransaction == NULL){ DUDAAAAAAa
+            //return "El campo nombre no puede ser nulo. Por favor rellene ambos campos.";}
+
         $transaction = new Transaction();
         $transaction->rentTime = $request->rentTime;
         $transaction->tsTransaction = $request->tsTransaction;
@@ -53,7 +59,7 @@ class TransactionController extends Controller
         $transaction->idPayment = $request->idPayment;
         $transaction->save();
         return response()->json([
-            "message" => "record created"
+            "message" => "Se ha realizado una transaccion"
         ], 201);
     }
 
@@ -66,6 +72,9 @@ class TransactionController extends Controller
     public function show($id)
     {
         $transaction = Transaction::find($id);
+        if($transaction == NULL){ //response????
+            return "No se ha encontrado la transaccion"
+        }
         return $transaction;
     }
 
@@ -92,6 +101,7 @@ class TransactionController extends Controller
         $transaction = Transaction::findOrFail($id);
 
         if ($request->get('rentTime') != NULL){
+            //disponibilidad????
             $transaction->rentTime = $request->get('rentTime');
         }
         if ($request->get('tsTransaction') != NULL){
@@ -128,6 +138,9 @@ class TransactionController extends Controller
     public function deleteData($id)
     {
         $transaction = Transaction::find($id);
+        if($transaction == NULL){
+            return "Transaccion no encontrada"
+        }
         $transaction->delete();
         return "La transacción fue eliminado.";
     }
@@ -135,6 +148,9 @@ class TransactionController extends Controller
     public function deleteVisibility($id)
     {
         $transaction = Transaction::find($id);
+        if($transaction == NULL){
+            return "Transaccion no encontrada"
+        }
         $transaction->visible = false;
         $transaction->save();
         return "La transacción fue eliminado.";
