@@ -73,7 +73,7 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::find($id);
         if($transaction == NULL){ //response????
-            return "No se ha encontrado la transaccion"
+            return "No se ha encontrado la transaccion";
         }
         return $transaction;
     }
@@ -139,7 +139,7 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::find($id);
         if($transaction == NULL){
-            return "Transaccion no encontrada"
+            return "Transaccion no encontrada";
         }
         $transaction->delete();
         return "La transacción fue eliminado.";
@@ -149,7 +149,7 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::find($id);
         if($transaction == NULL){
-            return "Transaccion no encontrada"
+            return "Transaccion no encontrada";
         }
         $transaction->visible = false;
         $transaction->save();

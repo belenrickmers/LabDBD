@@ -43,7 +43,14 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $payment = new Payment();
+        if ($request->payMethod == NULL){
+            return "Debe ingresar un metodo de pago.";
+        }
+        if(strlen($request->payMethod) > 20){
+            return "El metodo de pago debe tener maximo 20 caracteres";
+        }
         $payment->payMethod = $request->payMethod;
+        
         $payment->paymentState = $request->paymentState;
         $payment->tsPayment = $request->tsPayment;
         $payment->visible = $request->visible;
@@ -88,6 +95,9 @@ class PaymentController extends Controller
         $payment = Payment::findOrFail($id);
 
         if ($request->get('payMethod') != NULL){
+            if(strlen($request->payMethod) > 20){
+                return "El metodo de pago debe tener maximo 20 caracteres";
+            }
             $payment->payMethod = $request->get('payMethod');
         }
 
@@ -118,15 +128,21 @@ class PaymentController extends Controller
     public function deleteData($id)
     {
         $payment = Payment::find($id);
+        if($payment == NULL){
+            return "No se ha encontrado el pago.";
+        }
         $payment->delete();
-        return "El metodo de pago fue eliminado";
+        return "El pago fue eliminado";
     }
     //Metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
     public function deleteVisibility($id)
     {
         $payment = Payment::find($id);
+        if($payment == NULL){
+            return "No se ha encontrado el pago.";
+        }
         $payment->visible = false;
         $payment->save();
-        return "El metodo de pago fue eliminado";
+        return "El pago fue eliminado";
     }
 }

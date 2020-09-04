@@ -47,40 +47,40 @@ class UserController extends Controller
         $user = new User();
 
         if($request->firstName == NULL){
-            return "Debe ingresar un nombre."
+            return "Debe ingresar un nombre.";
         }
         if(strlen($request->firstName) > 20){
-            return "El nombre debe tener maximo 20 caracteres"
+            return "El nombre debe tener maximo 20 caracteres";
         }
         $user->firstName = $request->firstName;
 
         if($request->lastName == NULL){
-            return "Debe ingresar un apellido."
+            return "Debe ingresar un apellido.";
         }
         if(strlen($request->firstName) > 20){
-            return "El apellido debe tener maximo 20 caracteres"
+            return "El apellido debe tener maximo 20 caracteres";
         }
         $user->lastName = $request->lastName;
 
         if($request->dateofbirth == NULL){
-            return "Debe ingresar una fecha de nacimiento."
+            return "Debe ingresar una fecha de nacimiento.";
         } 
         $user->dateofbirth = $request->dateofbirth;
 
         if($request->email == NULL){
-            return "Debe ingresar un correo electronico"
+            return "Debe ingresar un correo electronico";
         }
         //dudaaaaaa
         $user->email = $request->email;
 
         if($request->password == NULL){
-            return "Debe ingresar una contraseña"
+            return "Debe ingresar una contraseña";
         }
         $user->password = $request->password;
 
 
         if($request->password == NULL){
-            return "Debe ingresar un numero de contacto"
+            return "Debe ingresar un numero de contacto";
         }
         $user->contactNumber = $request->contactNumber;
         
