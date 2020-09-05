@@ -1,0 +1,70 @@
+.contact{
+    padding: 4%;
+    height: 400px;
+}
+.col-md-3{
+    background: #2D3142;
+    padding: 4%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+.contact-info{
+    margin-top:10%;
+}
+.contact-info img{
+    margin-bottom: 15%;
+}
+.contact-info h2{
+    margin-bottom: 10%;
+}
+.col-md-9{
+    background: #BFC0C0;
+    padding: 3%;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+.contact-form label{
+    font-weight:600;
+}
+.contact-form button{
+    background: #EF8354;
+    color: #fff;
+    border: 2px solid #2D3142;
+    font-weight: 600;
+    width: 25%;
+}
+.contact-form button:focus{
+    box-shadow:none;
+}
+
+.col-letras{
+    color: #FFFFFF;
+}
+
+.col-fondo{
+    color: #EF8354;
+}
+
+.borde-celdas{
+    border: 1px solid #2D3142;
+}
+
+.fondo-pagina{
+    background-color: #EF8354;
+}
+
+.boton2{
+    background: #4F5D75;
+    color: #fff;
+    border: 2px solid #2D3142;
+    font-weight: 600;
+    width: 25%;
+}
+
+.fuente-texto{
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.fuente-texto2{
+    font-family: 'Kumbh Sans', sans-serif;
+}
