@@ -45,8 +45,22 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         $permission = new Permission();
+        if ($request->permission == NULL){
+            return "Debe ingresar el nombre del permiso.";
+        }
+        if(strlen($request->permission) > 20){
+            return "El nombre del permiso debe tener maximo 20 caracteres";
+        }
         $permission->permission = $request->permission;
+
+        if ($request->permDescription == NULL){
+            return "Debe ingresar una descripcion para el permiso.";
+        }
+        if(strlen($request->permDescription) > 200){
+            return "La descripcion del permiso no puede exceder los 200 caracteres";
+        }
         $permission->permDescription = $request->permDescription;
+
         $permission->visible = $request->visible;
         $permission->save();
         return response()->json([
@@ -88,16 +102,22 @@ class PermissionController extends Controller
     {
         $permission = Payment::findOrFail($id);
 
-        if ($request->get('var1') != NULL){
-            $permission->permission = $request->get('var1');
+        if ($request->get('permission') != NULL){
+            if(strlen($request->permission) > 20){
+                return "El nombre del permiso debe tener maximo 20 caracteres";
+            }
+            $permission->permission = $request->get('permission');
         }
 
-        if ($request->get('var2') != NULL){
-            $permission->permDescription = $request->get('var2');
+        if ($request->get('permDescription') != NULL){
+            if(strlen($request->permDescription) > 200){
+                return "La descripcion del permiso no puede exceder los 200 caracteres";
+            }
+            $permission->permDescription = $request->get('permDescription');
         }
 
-        if ($request->get('var3') != NULL){
-            $permission->visible = $request->get('var3');
+        if ($request->get('visible') != NULL){
+            $permission->visible = $request->get('visible');
         }
 
         $permission->save();
@@ -115,6 +135,9 @@ class PermissionController extends Controller
     public function deleteData($id)
     {
         $permission = Permission::find($id);
+        if($permission == NULL){
+            return "No se ha encontrado el permiso.";
+        }
         $permission->delete();
         return "El permiso fue eliminado";
     }
@@ -123,6 +146,9 @@ class PermissionController extends Controller
     public function deleteVisibility($id)
     {
         $permission = Permission::find($id);
+        if($permission == NULL){
+            return "No se ha encontrado el permiso.";
+        }
         $permission->visible = false;
         $permission->save();
         return "El permiso fue eliminado";

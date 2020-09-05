@@ -45,13 +45,49 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
+        if ($request->productName == NULL){
+            return "Debe ingresar un nombre para el producto.";
+        }
+        if(strlen($request->productName) > 30){
+            return "El nombre del producto debe tener maximo 30 caracteres";
+        }
         $product->productName = $request->productName;
-        $product->price = $request->price;
+
+        if ($request->productDescription == NULL){
+            return "Debe ingresar una descripcion para el producto.";
+        }
+        if(strlen($request->productDescription) > 250){
+            return "La descripcion del producto no puede exceder los 250 caracteres";
+        }
         $product->productDescription = $request->productDescription;
+
+        if ($request->region == NULL){
+            return "Debe ingresar una region para el producto.";
+        }
+        if(strlen($request->region) > 40){
+            return "La region del producto debe tener maximo 40 caracteres";
+        }
         $product->region = $request->region;
+
+        if ($request->comuna == NULL){
+            return "Debe ingresar una comuna para el producto.";
+        }
+        if(strlen($request->comuna) > 40){
+            return "La comuna del producto debe tener maximo 40 caracteres";
+        }
         $product->comuna = $request->comuna;
+        
+        if ($request->price == NULL){
+            return "Debe ingresar un precio para el producto.";
+        }
+        if(strlen($request->price) < 0){
+            return "El precio del producto no puede ser negativo.";
+        }
+        $product->price = $request->price;
+        //Duda si tengo que comprobar estos parametros
         $product->availability = $request->availability;
         $product->reviewAverage = $request->reviewAverage;
+        
         $product->visible = $request->visible;
         $product->save();
         return response()->json([
@@ -91,25 +127,40 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
+        $review = Review::find($id);
 
         if ($request->get('productName') != NULL){
+            if(strlen($request->productName) > 30){
+                return "El nombre del producto debe tener maximo 30 caracteres";
+            }
             $product->productName = $request->get('productName');
         }
 
         if ($request->get('price') != NULL){
+            if(strlen($request->price) < 0){
+                return "El precio del producto no puede ser negativo.";
+            }
             $product->price = $request->get('price');
         }
-
+        
         if ($request->get('productDescription') != NULL){
+            if(strlen($request->productDescription) > 250){
+                return "La descripcion del producto no puede exceder los 250 caracteres";
+            }
             $product->productDescription = $request->get('productDescription');
         }
 
         if ($request->get('region') != NULL){
+            if(strlen($request->region) > 40){
+                return "La region del producto debe tener maximo 40 caracteres";
+            }
             $product->region = $request->get('region');
         }
 
         if ($request->get('comuna') != NULL){
+            if(strlen($request->comuna) > 40){
+                return "La comuna del producto debe tener maximo 40 caracteres";
+            }
             $product->comuna = $request->get('comuna');
         }
 
@@ -139,16 +190,22 @@ class ProductController extends Controller
     public function deleteData($id)
     {
         $product = Product::find($id);
+        if($product == NULL){
+            return "No se ha encontrado el producto.";
+        }
         $product->delete();
-        return "El método de pago ha sido eliminado";
+        return "El producto ha sido eliminado";
     }
 
     //metodo delete que simula el borrado de una tupla mediante el cambio de visibilidad a false
     public function deleteVisibility($id)
     {
        $product = Product::find($id);
+       if($product == NULL){
+        return "No se ha encontrado el producto.";
+    }
        $product->visible = false;
        $product->save();
-       return "El método de pago ha sido eliminado";
+       return "El producto ha sido eliminado";
     } 
 }
