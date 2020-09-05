@@ -78,8 +78,7 @@ class UserController extends Controller
         }
         $user->password = $request->password;
 
-
-        if($request->password == NULL){
+        if($request->contactNumber == NULL){
             return "Debe ingresar un numero de contacto"
         }
         $user->contactNumber = $request->contactNumber;

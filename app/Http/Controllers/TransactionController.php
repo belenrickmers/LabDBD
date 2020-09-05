@@ -51,8 +51,8 @@ class TransactionController extends Controller
 
         $transaction = new Transaction();
         $transaction->rentTime = $request->rentTime;
-        $transaction->tsTransaction = $request->tsTransaction;
-        $transaction->visible = $request->visible;
+        $transaction->tsTransaction = timestamp();
+        $transaction->visible == True;
         $transaction->idUser = $request->idUser;
         $transaction->idProduct = $request->idProduct;
         $transaction->idReview = $request->idReview;
