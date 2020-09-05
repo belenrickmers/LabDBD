@@ -18,6 +18,6 @@ $factory->define(Transaction::class, function (Faker $faker) {
         'idPayment' => $faker->randomElement($idPayment),
         'rentTime' => $faker->dateTime($max = 'now', $timezone = null),
         'visible' => $faker->boolean,
-        'tsTransaction' => $faker->dateTime($max = 'now', $timezone = null),
+        //'tsTransaction' => $faker->dateTime($max = 'now', $timezone = null),
     ];
 });

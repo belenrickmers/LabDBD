@@ -79,12 +79,12 @@ class UserController extends Controller
         $user->password = $request->password;
 
         if($request->contactNumber == NULL){
-            return "Debe ingresar un numero de contacto"
+            return "Debe ingresar un numero de contacto";
         }
         $user->contactNumber = $request->contactNumber;
         
         $user->idRole = $request->idRole;
-        $user->visible = $request->visible;
+        $user->visible = true;
         $user->save();
         return response()->json([
             "message" => "record created"

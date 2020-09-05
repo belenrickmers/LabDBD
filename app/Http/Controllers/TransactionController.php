@@ -42,17 +42,17 @@ class TransactionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {    
-        if($transaction->rentTime == NULL){
-            return "Por favor seleccione el tiempo de arriendo del producto.";}
+    { 
         
         //elseif($request->tsTransaction == NULL){ DUDAAAAAAa
             //return "El campo nombre no puede ser nulo. Por favor rellene ambos campos.";}
 
         $transaction = new Transaction();
+        if($request->rentTime == NULL){
+            return "Por favor seleccione el tiempo de arriendo del producto.";}
         $transaction->rentTime = $request->rentTime;
-        $transaction->tsTransaction = timestamp();
-        $transaction->visible == True;
+        //$a = timestamp('added_on', 0)
+        $transaction->visible = true;
         $transaction->idUser = $request->idUser;
         $transaction->idProduct = $request->idProduct;
         $transaction->idReview = $request->idReview;
@@ -103,9 +103,6 @@ class TransactionController extends Controller
         if ($request->get('rentTime') != NULL){
             //disponibilidad????
             $transaction->rentTime = $request->get('rentTime');
-        }
-        if ($request->get('tsTransaction') != NULL){
-            $transaction->tsTransaction = $request->get('tsTransaction');
         }
         if ($request->get('visible') != NULL){
             $transaction->visible = $request->get('visible');

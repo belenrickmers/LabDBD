@@ -8,7 +8,7 @@ class Transaction extends Model
 {
     //aqui no se si ts_transaction debe ir en $fillable
 
-    protected $fillable = ['rentTime', 'tsTransaction', 'visible'];
+    protected $fillable = ['rentTime', 'visible'];
 
     public function user(){
         return $this->belongsTo(User::class);

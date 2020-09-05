@@ -27,7 +27,7 @@ class CreateTransactionsTable extends Migration
             $table->foreign('idReview')->references('id')->on('reviews');
             $table->foreign('idPayment')->references('id')->on('payments');
             $table->time('rentTime'); //debe ser tipo interval
-            $table->timestamp('tsTransaction'); //faltan los digitos
+            //$table->timestamp('tsTransaction', 0); //faltan los digitos
             $table->timestamps();
         });
     }
