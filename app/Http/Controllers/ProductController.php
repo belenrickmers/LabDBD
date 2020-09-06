@@ -93,10 +93,20 @@ class ProductController extends Controller
         
         //$product->visible = $request->visible;
 
+        //Deje esto asi para poder agregar un producto desde la vista
         $product->availability = true;
         $product->reviewAverage = 0;
-        
         $product->visible = true;
+
+        $request->all();
+        if($request->hasFile('product_picture')){
+            $destination_path = 'public/images/products';
+            $product_picture = $request->file('product_picture');
+            $image_name = $product_picture->getClientOriginalName();
+            $path = $request->file('product_picture')->storeAs($destination_path, $image_name);
+            $product->save();
+            $product->product_picture = 'public/images/products/' . $image_name . $product->id;
+        }
 
         $product->save();
         return response()->json([

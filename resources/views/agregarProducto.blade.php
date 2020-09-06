@@ -48,10 +48,9 @@
                 Categorías
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                    @foreach($category as $cat)
+                    <a class="dropdown-item" href="#">{{ $cat->categoryName }}</a>
+                    @endforeach
             </div>
             </li>
             </ul>
@@ -68,7 +67,7 @@
 
     <!-- PROBANDO FORMULARIO -->
 
-    <form action="{{route( 'addProduct')}} " method="POST" class="container-sm">
+    <form action="{{route( 'addProduct')}} " method="POST" class="container-sm " enctype = "multipart/form-data">
         <div class="container contact">
             <div class="row">
                 <div class="col-md-3">
@@ -88,7 +87,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2 fuente-texto2" for="precio">Precio:</label>
+                            <label class="control-label col-sm-4 fuente-texto2" for="precio">Precio (CLP):</label>
                             <div class="col-sm-10">          
                                 <input type="text" class="form-control borde-celdas" id="price" placeholder="Ingrese el precio del producto." name="price">
                             </div>
@@ -135,11 +134,12 @@
 
                         <!-- PARA LA IMAGEN ## INCOMPLETO -->
                         <div class="form-group">
-                            <label class="control-label col-sm-2 fuente-texto2" for="descripcion">Imagen:</label>
+                            <label class="control-label col-sm-2 fuente-texto2" for="imagen">Imagen:</label>
                             <div>
-                                <input accept="image/*" type="file" name="imagen" class="col-sm-8" >
+                                <input id="product_picture" accept="image/*" type="file" name="product_picture" class="col-sm-8" >
                             </div>
                         </div>
+                        
                         <!-- ############################# -->
 
                         <div class="form-group">        
