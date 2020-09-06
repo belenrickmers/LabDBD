@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Publicar producto</title>
 
     <!-- PROBANDO FORMULARIO -->
     <link href="{{ asset('css/agregarProducto.css') }}" rel="stylesheet" id="bootstrap-css">
@@ -19,64 +19,139 @@
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;700&display=swap" rel="stylesheet">
     <!------ Include the above in your HEAD tag ---------->
 
+    <!--Navbar-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
   </head>
-  <body class="fondo-pagina">
+  <body>
+    
+    
+    <!--Navbar-->
+
+    <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
+
+        <a class="navbar-brand" href="#">Arriendame.cl</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link mx-3" href="#">Ofertas</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categorías
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+            </li>
+            </ul>
+            <!-- Search form -->
+            <div class="active-pink-3 active-pink-4 mb0.5 mx-4 col-lg-6">
+                <input class="form-control" type="text" placeholder="Buscar producto" aria-label="Search">
+            </div>
+            <button class="btn btn-lg" style="background-color:transparent;">
+                <i class="fas fa-user"></i> Edit
+             </button>
+        </div>
+
+    </nav>
 
     <!-- PROBANDO FORMULARIO -->
 
-
-    <div class="container contact">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="contact-info">
-                    <h2 class="col-letras fuente-texto">Publica tu producto</h2>
-                    <h6 class="col-letras fuente-texto2">Ingresa los datos de tu producto para publicarlo.</h6>
+    <form action="{{route( 'addProduct')}} " method="POST" class="container-sm">
+        <div class="container contact">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <h1 class="col-letras fuente-texto">Publica tu producto</h1>
+                        <h6 class="col-letras fuente-texto2">Ingresa los datos de tu producto para publicarlo.</h6>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-9">
-                <div class="contact-form">
-                    <div class="form-group">
-                    <label class="control-label col-sm-4 fuente-texto2" for="nombre">Nombre publicación:</label>
-                    <div class="col-sm-10">          
-                        <input type="text" class="form-control borde-celdas" id="nombre" placeholder="Ingrese el nombre de la publicación." name="fname">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <label class="control-label col-sm-2 fuente-texto2" for="precio">Precio:</label>
-                    <div class="col-sm-10">          
-                        <input type="text" class="form-control borde-celdas" id="precio" placeholder="Ingrese el precio del producto." name="lname">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <label class="control-label col-sm-2 fuente-texto2" for="region">Región:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control borde-celdas" id="region" placeholder="Ingrese la región desde donde arrienda." name="email">
-                    </div>
-                    </div>
-                    <div class="form-group">
-                    <label class="control-label col-sm-2 fuente-texto2" for="comuna">Comuna:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control borde-celdas" id="comuna" placeholder="Ingrese la comuna desde donde arrienda." name="email">
-                    </div>
-                    </div>
-                    
 
-                    <div class="form-group">
-                    <label class="control-label col-sm-2 fuente-texto2" for="descripcion">Descripción:</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control borde-celdas" rows="5" id="descripcion" placeholder="Ingrese la descripción del producto. Máximo 250 caracteres."></textarea>
-                    </div>
-                    </div>
-                    <div class="form-group">        
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default fuente-texto2">Publicar</button>
-                    </div>
+                
+                <div class="col-md-9">
+                    <div class="contact-form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4 fuente-texto2" for="nombre">Nombre publicación:</label>
+                            <div class="col-sm-10">          
+                                <input type="text" class="form-control borde-celdas" id="productName" placeholder="Ingrese el nombre de la publicación." name="productName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2 fuente-texto2" for="precio">Precio:</label>
+                            <div class="col-sm-10">          
+                                <input type="text" class="form-control borde-celdas" id="price" placeholder="Ingrese el precio del producto." name="price">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2 fuente-texto2" for="region">Región:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control borde-celdas" id="region" placeholder="Ingrese la región desde donde arrienda." name="region">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2 fuente-texto2" for="comuna">Comuna:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control borde-celdas" id="comuna" placeholder="Ingrese la comuna desde donde arrienda." name="comuna">
+                            </div>
+                        </div>
+                        
+                        <!-- AQUI DEBEN IR LAS CATEGORIAS -->
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2 fuente-texto2" for="categoria">Categorías:</label>
+                            <div>
+
+                                <form>
+                                    <div class="form-check">
+                                            @foreach( $category as $cat)
+                                            <label class="control-label col-sm-4 fuente-texto2">
+                                                <input type="checkbox" name="check" unchecked> <span class="label-text">{{ $cat->categoryName }}</span>
+                                            </label>
+                                            @endforeach
+                                    </div>
+                                </form>
+                    
+                            </div>
+                        </div>
+                        <!-- #############################-->
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2 fuente-texto2" for="descripcion">Descripción:</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control borde-celdas" rows="5" id="productDescription" placeholder="Ingrese la descripción del producto. Máximo 250 caracteres." name="productDescription"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- PARA LA IMAGEN ## INCOMPLETO -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-2 fuente-texto2" for="descripcion">Imagen:</label>
+                            <div>
+                                <input accept="image/*" type="file" name="imagen" class="col-sm-8" >
+                            </div>
+                        </div>
+                        <!-- ############################# -->
+
+                        <div class="form-group">        
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default fuente-texto2">Publicar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </form>
 
 
 

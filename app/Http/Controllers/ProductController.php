@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 
+///  PROBANDO  ///
+use App\Category;
+
 class ProductController extends Controller
 {
     /**
@@ -85,10 +88,16 @@ class ProductController extends Controller
         }
         $product->price = $request->price;
         //Duda si tengo que comprobar estos parametros
-        $product->availability = $request->availability;
-        $product->reviewAverage = $request->reviewAverage;
+        //$product->availability = $request->availability;
+        //$product->reviewAverage = $request->reviewAverage;
         
-        $product->visible = $request->visible;
+        //$product->visible = $request->visible;
+
+        $product->availability = true;
+        $product->reviewAverage = 0;
+        
+        $product->visible = true;
+
         $product->save();
         return response()->json([
             "message" => "record created"
@@ -207,5 +216,11 @@ class ProductController extends Controller
        $product->visible = false;
        $product->save();
        return "El producto ha sido eliminado";
-    } 
+    }
+
+    ///////////   PROBANDO   ///////////////
+    public function publicarProducto(){
+        $category = Category::all()->where('visible', '==', true);
+        return View('agregarProducto', compact('category'));
+    }
 }

@@ -91,7 +91,7 @@ Route::put('/permission/deletevis/{id}', 'PermissionController@deleteVisibility'
 Route::get('/product/all', 'ProductController@indexAll');
 Route::get('/product/allvisible', 'ProductController@indexVisible');
 Route::get('/product/{id}', 'ProductController@show');
-Route::post('/product/new', 'ProductController@store');
+Route::post('/product/new', 'ProductController@store')->name('addProduct');
 Route::put('/product/update/{id}', 'ProductController@update');
 Route::delete('/product/delete/{id}', 'ProductController@deleteData');
 Route::put('/product/deletevis/{id}', 'ProductController@deleteVisibility');
@@ -132,3 +132,8 @@ Route::get('/categoryproduct/{id}', 'CategoryProductController@show');
 Route::post('/categoryproduct/new', 'CategoryProductController@store');
 Route::put('/categoryproduct/update/{id}', 'CategoryProductController@update');
 Route::delete('/categoryproduct/delete/{id}', 'CategoryProductController@deleteData');
+
+
+///   PROBANDO   ///
+//Para publicar un producto
+Route::get('/publicarproducto', 'ProductController@publicarProducto');

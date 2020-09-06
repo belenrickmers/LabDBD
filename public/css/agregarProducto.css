@@ -4,7 +4,7 @@
 }
 .col-md-3{
     background: #2D3142;
-    padding: 4%;
+    padding: 3%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
 }
@@ -53,12 +53,9 @@
     background-color: #EF8354;
 }
 
-.boton2{
-    background: #4F5D75;
-    color: #fff;
-    border: 2px solid #2D3142;
-    font-weight: 600;
-    width: 25%;
+.fondo-nav{
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #BFC0C0;
 }
 
 .fuente-texto{
