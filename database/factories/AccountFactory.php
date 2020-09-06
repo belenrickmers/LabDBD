@@ -10,7 +10,7 @@ $factory->define(Account::class, function (Faker $faker) {
 
     return [
         'idUser' => $faker->randomElement($idUser),
-        'cardNumber' => $faker->randomNumber($nbDigits = NULL, $strict = false),
+        'cardNumber' => $faker->numerify('############'),
         'cardType' => $faker->word, 
         'bank' => $faker->word,
         'visible' => $faker->boolean,

@@ -43,15 +43,28 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
+
+        if($request->idUser == NULL or $request->cardNumber == NULL or $request->cardType == NULL or $request->bank == NULL){
+            return "Los campos no pueden ser nulos. Por favor rellene todos los campos.";
+        }
+
+        elseif(strlen($request->cardNumber) != 12 ){
+            return "El número de tarjeta es inválido. Por favor ingresar nuevamente.";
+        }
+
+        elseif($request->cardType != "Cuenta Corriente" and $request->cardType != "Cuenta VISA" and $request->cardType != "Cuenta RUT"){
+            return "El tipo de tarjeta es inválido. Por favor ingresar nuevamente.";
+        }
+
         $account = new Account();
         $account->idUser = $request->idUser;
         $account->cardNumber = $request->cardNumber;
         $account->cardType = $request->cardType;
         $account->bank = $request->bank;
-        $account->visible = $request->visible;
+        $account->visible = true;
         $account->save();
         return response()->json([
-            "message" => "record created"
+            "message" => "La cuenta ha sido agregada con éxito."
         ], 201);
     }
 
@@ -64,6 +77,11 @@ class AccountController extends Controller
     public function show($id)
     {
         $account = Account::find($id);
+        
+        if($account == NULL){
+            return "No se ha encontrado la cuenta.";
+        }
+
         return $account;
     }
 
@@ -89,12 +107,24 @@ class AccountController extends Controller
     {
         $account = Account::findOrFail($id);
 
+        if($account == NULL){
+            return "No se ha encontrado la cuenta.";
+        }
+        
         if ($request->get('cardNumber') != NULL){
+            if(strlen($request->cardNumber) != 12 ){
+                return "El número de tarjeta es inválido. Por favor ingresar nuevamente.";
+            }
             $account->cardNumber = $request->get('cardNumber');
         }
+
         if ($request->get('cardType') != NULL){
+            if($request->cardType != "Cuenta Corriente" && $request->cardType != "Cuenta VISA" && $request->cardType != "Cuenta RUT"){
+                return "El tipo de tarjeta es inválido. Por favor ingresar nuevamente.";
+            }
             $account->cardType = $request->get('cardType');
         }
+
         if ($request->get('bank') != NULL){
             $account->bank = $request->get('bank');
         }
@@ -116,6 +146,9 @@ class AccountController extends Controller
     public function deleteData($id)
     {
         $account = Account::find($id);
+        if($account == NULL){
+            return "No se ha encontrado la cuenta.";
+        }
         $account->delete();
         return "La cuenta ha sido eliminada";
     }
@@ -124,6 +157,9 @@ class AccountController extends Controller
     public function deleteVisibility($id)
     {
        $account = Account::find($id);
+       if($account == NULL){
+            return "No se ha encontrado la cuenta.";
+        }
        $account->visible = false;
        $account->save();
        return "La cuenta ha sido eliminada";

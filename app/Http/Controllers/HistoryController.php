@@ -49,7 +49,7 @@ class HistoryController extends Controller
         $history->visible = $request->visible;
         $history->save();
         return response()->json([
-            "message" => "record created"
+            "message" => "Historial Creado"
         ], 201);
     }
 
@@ -62,6 +62,9 @@ class HistoryController extends Controller
     public function show($id)
     {
         $history = History::find($id);
+        if($history == NULL){
+            return "No se ha encontrado el historial.";
+        }
         return $history;
     }
 
@@ -86,6 +89,10 @@ class HistoryController extends Controller
     public function update(Request $request, $id)
     {
         $history = History::findOrFail($id);
+        
+        if($history == NULL){
+            return "No se ha encontrado el historial.";
+        }
 
         if ($request->get('directAction') != NULL){
             $history->directAction = $request->get('directAction');
@@ -108,6 +115,9 @@ class HistoryController extends Controller
     public function deleteData($id)
     {
         $history = History::find($id);
+        if($history == NULL){
+            return "No se ha encontrado el historial.";
+        }
         $history->delete();
         return "El historial ha sido eliminado";
     }
@@ -116,6 +126,9 @@ class HistoryController extends Controller
     public function deleteVisibility($id)
     {
         $history = History::find($id);
+        if($history == NULL){
+            return "No se ha encontrado el historial.";
+        }
         $history->visible = false;
         $history->save();
         return "El historial ha sido eliminado";
