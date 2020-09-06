@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('region', 40);
             $table->string('comuna', 40);
             $table->boolean('availability'); //Estado disponible o no disponible
-            //$table->string('product_picture') foto del producto
+            $table->string('product_picture')->nullable(); //foto del producto, url de la foto del producto
             $table->decimal('reviewAverage', 4, 2); //promedio de valoracion
             $table->boolean('visible');
             $table->timestamps();
