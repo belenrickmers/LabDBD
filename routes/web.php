@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'CategoryController@indexAll');
+Route::get('/{data}', 'CategoryController@indexAll');
 
 //Rutas de cuentas
 Route::get('/account/all', 'AccountController@indexAll');
