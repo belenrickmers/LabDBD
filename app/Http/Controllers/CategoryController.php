@@ -15,20 +15,21 @@ class CategoryController extends Controller
     public function indexAll($data)
     {   
         $category = Category::all();
-        if ($data == 0){
-            return View('welcomeLogged', compact('category'));
-        }
-        elseif ($data == 1){
-            return View('welcomeNotLogged', compact('category'));
-        }
+        return response()->json($category);
     }
 
     //metodo index que muestra solo las tuplas que tienen visibilidad true
     public function indexVisible()
     {
         $category = Category::all()->where('visible', '==', true);
-        return response()->json($category);
-    }
+        return View('welcomeLogged', compact('category'));
+   }
+
+   public function home()
+   {
+        $category = Category::all()->where('visible', '==', true);
+        return View('welcomeNotLogged', compact('category'));
+   }
 
     /**
      * Show the form for creating a new resource.

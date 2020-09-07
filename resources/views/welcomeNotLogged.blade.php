@@ -10,13 +10,13 @@
 
         <!--Navbar-->
         <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/homeNotLogged.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/homeNotLogged.css')}}">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
 
 
         <title>Arriendame.cl | Tu portal de arriendos</title>
 
-        <nav class="navbar navbar-expand-lg navbar-custom">
+        <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
 
             <a class="navbar-brand" href="#">Arriendame.cl</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,21 +46,55 @@
                     <input class="form-control" type="text" placeholder="Buscar producto" aria-label="Search">
                 </div>
                 
-                <button class="btn btn-secondary btn-outline-cuenta" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Iniciar sesión
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                    </svg>
-                </button>       
-                <button class="btn btn-secondary btn-outline-cuenta btn2" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Registrarse
-                </button>    
+                <div class="btn-group">
+                    <button type="button" class="btn btn-round btn-info1">Iniciar sesión</button>
+                    <button type="button" class="btn btn-round btn-info">Registrarse</button>
+                </div>
+  
             </div>
         </nav>
     </head>
 
     <body>
-        <h1>mklkjhghjkjh</h1>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ asset('images/producto.png') }}" class="d-block w-100" alt="Imagen de electrodomésticos y productos de cocina">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>¡Arrienda los mejores electrodomésticos para tu cocina!</h5>
+                  <p>Encuentra el producto que estás buscando para esa ocasión especial y no gastes dinero de más</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="{{ asset('images/instrum.jpg') }}" class="d-block w-100" alt="Imagen de teclado electronico, audífonos, parlantes y monitor de computador">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Arrienda productos para grabación de música</h5>
+                  <p>Arma tu propio estudio en tu hogar por el tiempo que necesites</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="{{ asset('images/bycicles.jpg') }}" class="d-block w-100" alt="Imagen de bicicletas">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Sal a dar un paseo</h5>
+                  <p>Arrienda una bicicleta por un día y disfruta del aire libre</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+
 
 
         <!-- Optional JavaScript -->

@@ -16,7 +16,7 @@
 
         <title>Arriendame.cl | Tu portal de arriendos</title>
 
-        <nav class="navbar navbar-expand-lg navbar-custom">
+        <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
 
             <a class="navbar-brand" href="#">Arriendame.cl</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,18 +45,21 @@
                 <div class="active-pink-3 active-pink-4 mb0.5 mx-4 col-lg-6">
                     <input class="form-control" type="text" placeholder="Buscar producto" aria-label="Search">
                 </div>
-                <div class= "dropdown">
-                    <button class="btn btn-secondary dropdown-toggle btn-outline-cuenta" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Mi Cuenta
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                
+                <div class="dropdown">
+                    <button class="btn btn-round btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
                         </svg>
+                        Mi cuenta
                     </button>
-                    
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Mis datos personales</a>
-                        <a class="dropdown-item" href="#">Mis productos</a>
-                        <a class="dropdown-item" href="#">Cerrar sesión</a>
+                      <a class="dropdown-item" href="#">Mis datos personales</a>
+                      <a class="dropdown-item" href="#">Mis productos</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Cerrar sesión</a>
                     </div>
                 </div>
             </div>
@@ -64,7 +67,44 @@
     </head>
 
     <body>
-        <h1>mkjh</h1>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ asset('images/producto.png') }}" class="d-block w-100" alt="Imagen de electrodomésticos y productos de cocina">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>¡Arrienda los mejores electrodomésticos para tu cocina!</h5>
+                  <p>Encuentra el producto que estás buscando para esa ocasión especial y deja de gastar dinero de más</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="{{ asset('images/instrum.jpg') }}" class="d-block w-100" alt="Imagen de teclado electronico, audífonos, parlantes y monitor de computador">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Arrienda productos para grabación de música</h5>
+                  <p>Arma tu propio estudio en tu hogar por el tiempo que necesites</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img src="{{ asset('images/bycicles.jpg') }}" class="d-block w-100" alt="Imagen de bicicletas">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Sal a dar un paseo</h5>
+                  <p>Arrienda una bicicleta por un día y disfruta del aire libre</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
 
 
         <!-- Optional JavaScript -->
