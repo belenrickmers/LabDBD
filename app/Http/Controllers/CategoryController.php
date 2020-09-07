@@ -12,10 +12,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexAll()
-    {
+    public function indexAll($data)
+    {   
         $category = Category::all();
-        return response()->json($category);
+        if ($data == 0){
+            return View('welcomeLogged', compact('category'));
+        }
+        elseif ($data == 1){
+            return View('welcomeNotLogged', compact('category'));
+        }
     }
 
     //metodo index que muestra solo las tuplas que tienen visibilidad true
