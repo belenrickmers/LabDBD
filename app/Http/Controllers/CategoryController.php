@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function indexAll()
     {
         $category = Category::all();
-        return response()->json($category);
+        return View('welcomeLogged', compact('category'));
     }
 
     //metodo index que muestra solo las tuplas que tienen visibilidad true

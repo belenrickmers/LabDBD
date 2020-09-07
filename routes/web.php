@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'CategoryController@indexAll');
 
 //Rutas de cuentas
 Route::get('/account/all', 'AccountController@indexAll');
@@ -127,7 +125,7 @@ Route::delete('/transaction/delete/{id}', 'TransactionController@deleteData');
 Route::delete('/transaction/deletevis/{id}', 'TransactionController@deleteVisibility');
 
 //Rutas de CategoryProduct
-Route::get('/categoryproduct/all', 'CategoryProductController@index');
+Route::get('/categoryproduct/all', 'CategoryProductController@indexAll');
 Route::get('/categoryproduct/{id}', 'CategoryProductController@show');
 Route::post('/categoryproduct/new', 'CategoryProductController@store');
 Route::put('/categoryproduct/update/{id}', 'CategoryProductController@update');
