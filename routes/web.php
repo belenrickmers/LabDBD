@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/cuenta','cuenta');
+Route::view('/misproductos','cuenta');
+
+Route::get('/logged', 'CategoryController@indexVisible');
+Route::get('/', 'CategoryController@home');
+Route::get('/{data}', 'CategoryController@indexAll');
 Route::get('/logged', 'CategoryController@indexVisible');
 Route::get('/', 'CategoryController@home');
 
