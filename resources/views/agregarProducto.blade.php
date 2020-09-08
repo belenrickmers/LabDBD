@@ -115,7 +115,9 @@
                                     <div class="form-check">
                                             @foreach( $category as $cat)
                                             <label class="control-label col-sm-4 fuente-texto2">
-                                                <input type="checkbox" name="check" unchecked> <span class="label-text">{{ $cat->categoryName }}</span>
+                                                
+                                                <input type="checkbox" unchecked id='categories[]' name='categories[]' value='{{ $cat->categoryName}}'> <span class="label-text">{{ $cat->categoryName }}</span>
+                                                
                                             </label>
                                             @endforeach
                                     </div>

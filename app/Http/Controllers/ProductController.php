@@ -7,6 +7,7 @@ use App\Product;
 
 ///  PROBANDO  ///
 use App\Category;
+use App\CategoryProduct;
 
 class ProductController extends Controller
 {
@@ -109,6 +110,15 @@ class ProductController extends Controller
         }
 
         $product->save();
+        $categories = $request->categories;
+        
+        foreach($categories as $cat){
+            $idCategory = Category::all()->where('categoryName', '==', $cat);
+            $catProd = new CategoryProduct();
+            $catProd->idCategory = $idCategory->first()->id;
+            $catProd->idProduct = $product->id;
+            $catProd->save();
+        }
         return response()->json([
             "message" => "record created"
         ], 201);
