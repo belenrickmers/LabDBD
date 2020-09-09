@@ -1,21 +1,38 @@
+
 .navbar-custom {
-    width: 100%;
-    height: 55px;
-    background-color: #2D3142;
+  width: 100%;
+  height: 55px;
 }
 
 .navbar-brand{
     font-family: 'Pacifico', cursive;
     color: #EF8354;
     font-size: 2em;
+    margin-left: 4em;
+    margin-right: 1em;
+}
+
+.navbar-brand:hover{
+  color: #4F5D75;
 }
 
 .nav-item{
     font-family: 'Quicksand', sans-serif;
+    text-align: center;
 }
+
 .nav-link{
-    color: #ffffff;
+    color: #4F5D75;
     font-size: 1em;
+}
+.nav-link:hover{
+  color: #BFC0C0;
+  font-size: 1em;
+}
+
+.fondo-nav{
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #BFC0C0;
 }
 
 .active-pink-4 input[type=text]:focus:not([readonly]) {
@@ -28,31 +45,32 @@
     font-family: 'Quicksand', sans-serif;
     font-size: 1em;
     height: 1.5em;
-    /*margin: 4em;*/
+    margin-right: 2em;
   }
-  .circle {
-    border-radius: 100%;
-    border: 0.25em solid black;
-    height: 50px;
-    width: 50px;
-  }
-  .glyphicon.glyphicon-edit{
-    font-size:28px;
-    padding: 8px 3px 0 8px;
-  }
-  
-  .submit-with-icon {
-    background: transparent;
-      border: 0px;
-      padding: 0;
-      outline: 0;
-  }
-  
-  .circle:active {
-    content: '';
-    background-color: rgb(235, 235, 235);
-    border-color: rgb(173, 173, 173);
-  }
+
+.btn{
+font-family: 'Quicksand', sans-serif;
+border-color: #EF8354;
+font-size: 0.95em;
+}
+
+.btn-round{
+border-radius: 17em;
+}
+
+.btn-info1{
+background-color: #EF8354;
+color: #ffffff;
+}
+.btn-info{
+color: #EF8354;
+background-color: #ffffff;
+}
+.btn:hover{
+color: #ffffff;
+background-color: #4F5D75;
+}
+/*CSS del formulario*/
 
   .form-group{
     font-family: 'Quicksand', sans-serif;
@@ -101,8 +119,25 @@
         font-family: 'Quicksand', sans-serif;
     }
 
-    .btn{
+    .btn-secondary{
         float: right;
         width: 150px;
         font-family: 'Quicksand', sans-serif;
+    }
+
+    .btn-round{
+      border-radius: 17em;
+    }
+    
+    .btn-info1{
+      background-color: #EF8354;
+      color: #ffffff;
+    }
+    .btn-info{
+      color: #EF8354;
+      background-color: #ffffff;
+    }
+    .btn:hover{
+      color: #ffffff;
+      background-color: #4F5D75;
     }

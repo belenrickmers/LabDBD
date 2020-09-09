@@ -89,6 +89,7 @@ class UserController extends Controller
         return response()->json([
             "message" => "record created"
         ], 201);
+        //return view('welcomeLogged');
     }
 
     /**
