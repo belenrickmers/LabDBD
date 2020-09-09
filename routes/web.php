@@ -14,13 +14,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/cuenta','cuenta');
-Route::view('/misproductos','cuenta');
+Route::view('/misproductos','ownProducts');
 
 Route::get('/logged', 'CategoryController@indexVisible');
 Route::get('/', 'CategoryController@home');
-Route::get('/{data}', 'CategoryController@indexAll');
+//Route::get('/{data}', 'CategoryController@indexAll');
 Route::get('/logged', 'CategoryController@indexVisible');
 Route::get('/', 'CategoryController@home');
+
+
+
+//VISTA NUEVO USUARIO
+Route::get('/usuario/nuevousuario','CategoryController@home2');
 
 //Rutas de cuentas
 Route::get('/account/all', 'AccountController@indexAll');
@@ -33,7 +38,9 @@ Route::put('/account/deletevis/{id}', 'AccountController@deleteVisibility');
 
 //Rutas de categorias
 Route::get('/category/all', 'CategoryController@indexAll');
-Route::get('/category/allvisible', 'CategoryController@indexVisible');
+
+Route::get('/category/allvisible', 'CategoryController@indexVisible')->name('allCategory');
+
 Route::get('/category/{id}', 'CategoryController@show');
 Route::post('/category/new', 'CategoryController@store');
 Route::put('/category/update/{id}', 'CategoryController@update');
@@ -105,7 +112,7 @@ Route::put('/product/deletevis/{id}', 'ProductController@deleteVisibility');
 Route::get('/user/all','UserController@indexAll');
 Route::get('/user/allvisible', 'UserController@indexVisible');
 Route::get('/user/{id}','UserController@show');
-Route::post('/user/new','UserController@store');
+Route::post('/user/new','UserController@store')->name('addUser');
 Route::put('/user/update/{id}', 'UserController@update');
 Route::delete('/user/delete/{id}', 'UserController@deleteData');
 Route::delete('/user/deletevis/{id}', 'UserController@deleteVisibility');
@@ -141,4 +148,4 @@ Route::delete('/categoryproduct/delete/{id}', 'CategoryProductController@deleteD
 
 ///   PROBANDO   ///
 //Para publicar un producto
-Route::get('/publicarproducto', 'ProductController@publicarProducto');
+Route::view('/publicarproducto', 'agregarProducto');
