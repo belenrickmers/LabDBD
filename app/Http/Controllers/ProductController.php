@@ -8,6 +8,7 @@ use App\Product;
 ///  PROBANDO  ///
 use App\Category;
 use App\CategoryProduct;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -39,6 +40,14 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function validarImagen(Request $request){
+        if($this->validate($request, ['product_picture' => 'required|image|mimes:jpeg,png,jpg|max:1']) == false){
+            return "no se que";
+        }
+        //return back()->with('succes', 'porqueeeeeeee');
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -103,6 +112,13 @@ class ProductController extends Controller
         if($request->hasFile('product_picture')){
             $destination_path = 'public/images/products';
             $product_picture = $request->file('product_picture');
+            
+            $validate = Validator::make($request->all(), ['product_picture' => 'image|mimes:jpeg,png,jpg|max:2048',]);
+            if($validate->fails()){
+                
+                return back()->with('fail', 'Imagen invalida.');
+            }
+
             $image_name = $product_picture->getClientOriginalName();
             $path = $request->file('product_picture')->storeAs($destination_path, $image_name);
             $product->save();

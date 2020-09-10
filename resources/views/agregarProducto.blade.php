@@ -153,9 +153,17 @@
                             <label class="control-label col-sm-2 fuente-texto2" for="imagen">Imagen:</label>
                             <div>
                                 <input id="product_picture" accept="image/*" type="file" name="product_picture" class="col-sm-8" >
+                                <div>
+                                @if (\Session::has('fail'))
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <li>{!! \Session::get('fail') !!}</li>
+                                    </ul>
+                                </div>
+                                @endif
+                                </div>
                             </div>
                         </div>
-                        
                         <!-- ############################# -->
 
                         <div class="form-group">        
