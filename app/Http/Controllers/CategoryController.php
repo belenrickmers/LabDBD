@@ -39,6 +39,7 @@ class CategoryController extends Controller
    public function log()
    {
         $category = Category::all()->where('visible', '==', true);
+        return $category;
         return View('login', compact('category'));
    }
 

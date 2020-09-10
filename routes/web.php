@@ -19,7 +19,7 @@ Route::view('/misproductos','ownProducts');
 Route::get('/logged', 'CategoryController@indexVisible');
 Route::get('/', 'CategoryController@home');
 //Route::get('/{data}', 'CategoryController@indexAll');
-Route::get('/logged', 'CategoryController@indexVisible');
+//Route::get('/logged', 'CategoryController@indexVisible');
 Route::get('/', 'CategoryController@home');
 
 
@@ -43,7 +43,7 @@ Route::put('/account/deletevis/{id}', 'AccountController@deleteVisibility');
 //Rutas de categorias
 Route::get('/category/all', 'CategoryController@indexAll');
 
-Route::get('/category/allvisible', 'CategoryController@indexVisible')->name('allCategory');
+//Route::get('/category/allvisible', 'CategoryController@indexVisible')->name('allCategory');
 
 Route::get('/category/{id}', 'CategoryController@show');
 Route::post('/category/new', 'CategoryController@store');
@@ -152,4 +152,9 @@ Route::delete('/categoryproduct/delete/{id}', 'CategoryProductController@deleteD
 
 ///   PROBANDO   ///
 //Para publicar un producto
-Route::view('/publicarproducto', 'agregarProducto');
+Route::get('/publicarproducto', 'ProductController@publicarProducto');
+
+//Login
+Route::get('/login', 'LoginController@loginHome');
+Route::post('/login/userAuth', 'LoginController@ingresoDatosLogin')->name('ingresoDatosLogin');
+Route::post('/log', 'LoginController@login')->name('log');

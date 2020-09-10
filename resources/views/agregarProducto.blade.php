@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <title>Publicar producto</title>
+    <title>Arriendame.cl | Publicar producto</title>
 
     <!-- PROBANDO FORMULARIO -->
     <link href="{{ asset('css/agregarProducto.css') }}" rel="stylesheet" id="bootstrap-css">
@@ -39,30 +39,44 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link mx-3" href="#">Ofertas</a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="#">Ofertas</a>
+                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categorías
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    @foreach($category as $cat)
-                    <a class="dropdown-item" href="#">{{ $cat->categoryName }}</a>
-                    @endforeach
-            </div>
-            </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categorías
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @foreach($category as $cat)
+                        <a class="dropdown-item" href="#">{{ $cat->categoryName }}</a>
+                        @endforeach
+                    </div>  
+                </li>
             </ul>
+
             <!-- Search form -->
             <div class="active-pink-3 active-pink-4 mb0.5 mx-4 col-lg-6">
                 <input class="form-control" type="text" placeholder="Buscar producto" aria-label="Search">
             </div>
-            <button class="btn btn-lg" style="background-color:transparent;">
-                <i class="fas fa-user"></i> Edit
-             </button>
+            
+            <div class="dropdown">
+                <button class="btn btn-round btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+                        <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                    </svg>
+                    Mi cuenta
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Mis datos personales</a>
+                <a class="dropdown-item" href="/misproductos">Mis productos</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/">Cerrar sesión</a>
+                </div>
+            </div>
         </div>
-
     </nav>
 
     <!-- PROBANDO FORMULARIO -->
