@@ -97,8 +97,11 @@
     
     </form>
             <!------------------- PROBANDO IF -------------------->
-
-            
+            @if( $resultado == 1)
+                usuario incorrecto
+            @elseif( $resultado == 2)
+                contraseña incorrecta
+            @endif
 
 
             

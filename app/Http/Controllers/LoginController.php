@@ -10,8 +10,9 @@ class LoginController extends Controller
 {
     
     public function loginHome(){
+        $resultado = 0;
         $category = Category::all()->where('visible', '==', true);
-        return View('login', compact('category'));
+        return View('login', compact('category', 'resultado'));
     }
 
 
@@ -31,7 +32,7 @@ class LoginController extends Controller
         $category = Category::all()->where('visible', '==', true);
 
         if($validacionUsuario and $validacionPassword){
-            return View('welcomeLogged', compact('user', 'category'));
+            return View('welcomeLogged', compact('user', 'category', 'resultado'));
         }
         else if($validacionUsuario == false){
             $resultado = 1;
