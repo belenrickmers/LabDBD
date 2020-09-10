@@ -18,7 +18,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
 
-            <a class="navbar-brand" href="#">Arriendame.cl</a>
+            <a class="navbar-brand" onclick="window.location.href='/logged'">Arriendame.cl</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,7 +59,7 @@
                       <a class="dropdown-item" href="#">Mis datos personales</a>
                       <a class="dropdown-item" href="#">Mis productos</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Cerrar sesión</a>
+                      <a class="dropdown-item" onclick="window.location.href='/'">Cerrar sesión</a>
                     </div>
                 </div>
             </div>
