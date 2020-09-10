@@ -17,6 +17,7 @@ Route::view('/cuenta','cuenta');
 Route::view('/misproductos','ownProducts');
 
 Route::get('/logged', 'CategoryController@indexVisible');
+
 Route::get('/', 'CategoryController@home');
 //Route::get('/{data}', 'CategoryController@indexAll');
 //Route::get('/logged', 'CategoryController@indexVisible');

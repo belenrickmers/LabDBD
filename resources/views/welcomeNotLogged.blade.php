@@ -16,7 +16,11 @@
 
         <title>Arriendame.cl | Tu portal de arriendos</title>
 
-        <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
+    </head>
+
+    <body>
+
+    <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
 
             <a class="navbar-brand" href="#">Arriendame.cl</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,15 +51,13 @@
                 </div>
                 
                 <div class="btn-group">
-                    <button type="button" class="btn btn-round btn-info1">Iniciar sesión</button>
-                    <button type="button" class="btn btn-round btn-info">Registrarse</button>
+                    <button onclick="window.location.href='/login'" type="button" class="btn btn-round btn-info1">Iniciar sesión</button>
+                    <button onclick="window.location.href='/login'" type="button" class="btn btn-round btn-info">Registrarse</button>
                 </div>
-  
+
             </div>
         </nav>
-    </head>
 
-    <body>
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>

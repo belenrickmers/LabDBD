@@ -25,17 +25,17 @@ class CategoryController extends Controller
         return View('welcomeLogged', compact('category'));
    }
 
-   public function home()
-   {
-        $category = Category::all()->where('visible', '==', true);
-        return View('welcomeNotLogged', compact('category'));
-   }
+   public function home(){
+    $category = Category::all()->where('visible', '==', true);
+    return View('welcomeNotLogged', compact('category'));
+}
 
    public function home2()
    {
         $category = Category::all()->where('visible', '==', true);
         return View('newRegister', compact('category'));
    }
+   
    public function log()
    {
         $category = Category::all()->where('visible', '==', true);
