@@ -98,24 +98,80 @@
                             <label class="control-label col-sm-4 fuente-texto2" for="nombre">Nombre publicación:</label>
                             <div class="col-sm-10">          
                                 <input type="text" class="form-control borde-celdas" id="productName" placeholder="Ingrese el nombre de la publicación." name="productName">
+                                <div>
+                                    @if (\Session::has('nameFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('nameFail') }}
+                                    </div>
+                                    @endif
+                                    
+                                    @if (\Session::has('nameLenFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('nameLenFail') }}
+                                    </div>
+                                    @endif
+                                                                 
+                                </div>
+
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-4 fuente-texto2" for="precio">Precio (CLP):</label>
                             <div class="col-sm-10">          
                                 <input type="text" class="form-control borde-celdas" id="price" placeholder="Ingrese el precio del producto." name="price">
+                                <div>
+                                    @if (\Session::has('priceFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('priceFail') }}
+                                    </div>
+                                    @endif
+                                    @if (\Session::has('priceTypeFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('priceTypeFail') }}
+                                    </div>
+                                    @endif
+                                    @if (\Session::has('priceValueFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('priceValueFail') }}
+                                    </div>
+                                    @endif
+                                </div> 
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2 fuente-texto2" for="region">Región:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control borde-celdas" id="region" placeholder="Ingrese la región desde donde arrienda." name="region">
+                                <div>
+                                    @if (\Session::has('regionFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('regionFail') }}
+                                    </div>
+                                    @endif
+                                    @if (\Session::has('regionLenFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('regionLenFail') }}
+                                    </div>
+                                    @endif
+                                </div> 
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2 fuente-texto2" for="comuna">Comuna:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control borde-celdas" id="comuna" placeholder="Ingrese la comuna desde donde arrienda." name="comuna">
+                                <div>
+                                    @if (\Session::has('comunaFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('comunaFail') }}
+                                    </div>
+                                    @endif
+                                    @if (\Session::has('comunaLenFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('comunaLenFail') }}
+                                    </div>
+                                    @endif
+                                </div> 
                             </div>
                         </div>
                         
@@ -145,6 +201,18 @@
                             <label class="control-label col-sm-2 fuente-texto2" for="descripcion">Descripción:</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control borde-celdas" rows="5" id="productDescription" placeholder="Ingrese la descripción del producto. Máximo 250 caracteres." name="productDescription"></textarea>
+                                <div>
+                                    @if (\Session::has('descriptionFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('descriptionFail') }}
+                                    </div>
+                                    @endif
+                                    @if (\Session::has('descriptionLenFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('descriptionLenFail') }}
+                                    </div>
+                                    @endif
+                                </div>                                
                             </div>
                         </div>
 

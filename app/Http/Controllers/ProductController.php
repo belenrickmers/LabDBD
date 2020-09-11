@@ -59,42 +59,53 @@ class ProductController extends Controller
     {
         $product = new Product();
         if ($request->productName == NULL){
-            return "Debe ingresar un nombre para el producto.";
+            //return "Debe ingresar un nombre para el producto.";
+            return back()->with('nameFail', 'Debe ingresar un nombre para el producto.');
         }
         if(strlen($request->productName) > 30){
-            return "El nombre del producto debe tener maximo 30 caracteres";
+            //return "El nombre del producto debe tener maximo 30 caracteres";
+            return back()->with('nameLenFail', 'El nombre del producto debe tener maximo 30 caracteres.');
         }
         $product->productName = $request->productName;
 
         if ($request->productDescription == NULL){
-            return "Debe ingresar una descripcion para el producto.";
+            //return "Debe ingresar una descripcion para el producto.";
+            return back()->with('descriptionFail', 'Debe ingresar una descripcion para el producto.');
         }
         if(strlen($request->productDescription) > 250){
-            return "La descripcion del producto no puede exceder los 250 caracteres";
+            //return "La descripcion del producto no puede exceder los 250 caracteres";
+            return back()->with('descriptionLenFail', 'La descripcion del producto no puede exceder los 250 caracteres.');
         }
         $product->productDescription = $request->productDescription;
 
         if ($request->region == NULL){
-            return "Debe ingresar una region para el producto.";
+            //return "Debe ingresar una region para el producto.";
+            return back()->with('regionFail', 'Debe ingresar una region para el producto.');
         }
         if(strlen($request->region) > 40){
-            return "La region del producto debe tener maximo 40 caracteres";
+            //return "La region del producto debe tener maximo 40 caracteres";
+            return back()->with('regionLenFail', 'La region del producto debe tener maximo 40 caracteres.');
         }
         $product->region = $request->region;
 
         if ($request->comuna == NULL){
-            return "Debe ingresar una comuna para el producto.";
+            //return "Debe ingresar una comuna para el producto.";
+            return back()->with('comunaFail', 'Debe ingresar una comuna para el producto.');
         }
         if(strlen($request->comuna) > 40){
-            return "La comuna del producto debe tener maximo 40 caracteres";
+            //return "La comuna del producto debe tener maximo 40 caracteres";
+            return back()->with('comunaLenFail', 'La comuna del producto debe tener maximo 40 caracteres.');
         }
         $product->comuna = $request->comuna;
         
+        //FALTA VALIDAR SI EL PRECIO ES UN NUMERO
         if ($request->price == NULL){
-            return "Debe ingresar un precio para el producto.";
+            //return "Debe ingresar un precio para el producto.";
+            return back()->with('priceFail', 'Debe ingresar un precio para el producto.');
         }
-        if(strlen($request->price) < 0){
-            return "El precio del producto no puede ser negativo.";
+        if($request->price < 0){
+            //return "El precio del producto no puede ser negativo.";
+            return back()->with('priceValueFail', 'El precio del producto no puede ser negativo.');
         }
         $product->price = $request->price;
         //Duda si tengo que comprobar estos parametros
