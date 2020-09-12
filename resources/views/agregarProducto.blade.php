@@ -192,7 +192,13 @@
                                             @endforeach
                                     </div>
                                 </form>
-                    
+                                <div>
+                                    @if (\Session::has('categoryFail'))
+                                    <div class="p1">
+                                        {{ \Session::get('categoryFail') }}
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <!-- #############################-->
@@ -221,16 +227,18 @@
                             <label class="control-label col-sm-2 fuente-texto2" for="imagen">Imagen:</label>
                             <div>
                                 <input id="product_picture" accept="image/*" type="file" name="product_picture" class="col-sm-8" >
-                                <div>
+                            </div>
+                                
+                            <div>
                                 @if (\Session::has('fail'))
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        <li>{!! \Session::get('fail') !!}</li>
-                                    </ul>
+                                <div class="alert alert-danger imageAlert">
+                                    
+                                        {!! \Session::get('fail') !!}
+                                    
                                 </div>
                                 @endif
-                                </div>
                             </div>
+                            
                         </div>
                         <!-- ############################# -->
 

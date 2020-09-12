@@ -99,6 +99,11 @@ class ProductController extends Controller
         $product->comuna = $request->comuna;
         
         //FALTA VALIDAR SI EL PRECIO ES UN NUMERO
+        $validatePrice = Validator::make($request->all(), ['price' => 'numeric',]);
+        if($validatePrice->fails()){
+            return back()->with('priceTypeFail', 'El precio debe ser un número');
+        }
+
         if ($request->price == NULL){
             //return "Debe ingresar un precio para el producto.";
             return back()->with('priceFail', 'Debe ingresar un precio para el producto.');
@@ -139,6 +144,11 @@ class ProductController extends Controller
         $product->save();
         $categories = $request->categories;
         
+        if(empty($categories)){
+            //return "Debe seleccionar al menos una categoría para el producto.";
+            return back()->with('categoryFail', 'Debe seleccionar al menos una categoría para el producto.');
+        }
+
         foreach($categories as $cat){
             $idCategory = Category::all()->where('categoryName', '==', $cat);
             $catProd = new CategoryProduct();

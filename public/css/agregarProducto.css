@@ -67,7 +67,12 @@
 }
 
 .p1{
-    color: #ff2f2f;
+    color: #a01111;
     font-size: 0.8em;
     font-family: 'Kumbh Sans', sans-serif;
+  }
+
+  .imageAlert{
+    width:23%;
+    height: 20%; 
   }
