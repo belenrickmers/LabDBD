@@ -10,7 +10,7 @@
 
     <title>Arriendame.cl | Publicar producto</title>
 
-    <!-- PROBANDO FORMULARIO -->
+    <!-- FORMULARIO -->
     <link href="{{ asset('css/agregarProducto.css') }}" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -32,7 +32,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
 
-        <a class="navbar-brand" href="#">Arriendame.cl</a>
+    <form action="{{route( 'goHomeLogged')}} " method="POST">
+    <input type="hidden" id="id" name="id" value= "{{$user->id}}">
+    <a>
+    <input value="Arriendame.cl" type="submit" class="formularioinvisible navbar-brand">
+    </a>
+    </form>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -67,11 +72,20 @@
                         <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                         <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
                     </svg>
-                    Mi cuenta
+                    {{ $user->firstName . " " .  $user->lastName}}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Mis datos personales</a>
-                <a class="dropdown-item" href="/misproductos">Mis productos</a>
+                <form action="{{route( 'misDatos')}} " method="POST"> 
+                    <button class="dropdown-item" type="submit" href="/misDatos">
+                        Mis datos personales<input class="invisible" id="id" name="id" value= "{{$user->id}}" >
+                    </button>  
+                    </form>
+
+                    <form action="{{route( 'misProductos')}} " method="POST">
+                    <button class="dropdown-item" type="submit" href="/misProductos">
+                        Mis productos<input class="invisible" id="id" name="id" value= "{{$user->id}}" >
+                    </button>
+                    </form>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/">Cerrar sesión</a>
                 </div>
@@ -79,9 +93,9 @@
         </div>
     </nav>
 
-    <!-- PROBANDO FORMULARIO -->
+    <!-- FORMULARIO -->
 
-    <form action="{{route( 'addProduct')}} " method="POST" class="container-sm " enctype = "multipart/form-data">
+    <form action="{{route('addProduct')}} " method="POST" class="container-sm " enctype = "multipart/form-data">
         <div class="container contact">
             <div class="row">
                 <div class="col-md-3">
@@ -92,6 +106,7 @@
                 </div>
                 
                 <input type="hidden" id="id" name="id" value= "{{$user->id}}">
+                <input type="hidden" id="cate" name="cate" value= "{{$category}}">
                 
                 <div class="col-md-9">
                     <div class="contact-form">
@@ -100,18 +115,16 @@
                             <div class="col-sm-10">          
                                 <input type="text" class="form-control borde-celdas" id="productName" placeholder="Ingrese el nombre de la publicación." name="productName">
                                 <div>
-                                    @if (\Session::has('nameFail'))
-                                    <div class="p1">
-                                        {{ \Session::get('nameFail') }}
+                                    @if($resultado === 1)
+                                    <div class="p1"> 
+                                        Debe ingresar un nombre para el producto.
                                     </div>
                                     @endif
-                                    
-                                    @if (\Session::has('nameLenFail'))
-                                    <div class="p1">
-                                        {{ \Session::get('nameLenFail') }}
+                                    @if($resultado === 2)
+                                    <div class="p1"> 
+                                        El nombre del producto debe tener máximo 30 caracteres.
                                     </div>
                                     @endif
-                                                                 
                                 </div>
 
                             </div>
@@ -121,19 +134,14 @@
                             <div class="col-sm-10">          
                                 <input type="text" class="form-control borde-celdas" id="price" placeholder="Ingrese el precio del producto." name="price">
                                 <div>
-                                    @if (\Session::has('priceFail'))
+                                    @if ($resultado === 9)
                                     <div class="p1">
-                                        {{ \Session::get('priceFail') }}
+                                        Debe ingresar un precio numérico para el producto.
                                     </div>
                                     @endif
-                                    @if (\Session::has('priceTypeFail'))
+                                    @if ($resultado === 11)
                                     <div class="p1">
-                                        {{ \Session::get('priceTypeFail') }}
-                                    </div>
-                                    @endif
-                                    @if (\Session::has('priceValueFail'))
-                                    <div class="p1">
-                                        {{ \Session::get('priceValueFail') }}
+                                        El precio del producto no puede ser negativo.
                                     </div>
                                     @endif
                                 </div> 
@@ -144,14 +152,14 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control borde-celdas" id="region" placeholder="Ingrese la región desde donde arrienda." name="region">
                                 <div>
-                                    @if (\Session::has('regionFail'))
+                                    @if ($resultado === 5)
                                     <div class="p1">
-                                        {{ \Session::get('regionFail') }}
+                                        Debe ingresar una region para el producto.
                                     </div>
                                     @endif
-                                    @if (\Session::has('regionLenFail'))
+                                    @if ($resultado === 6)
                                     <div class="p1">
-                                        {{ \Session::get('regionLenFail') }}
+                                        La region del producto debe tener máximo 40 caracteres.
                                     </div>
                                     @endif
                                 </div> 
@@ -162,14 +170,14 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control borde-celdas" id="comuna" placeholder="Ingrese la comuna desde donde arrienda." name="comuna">
                                 <div>
-                                    @if (\Session::has('comunaFail'))
+                                    @if ($resultado === 7)
                                     <div class="p1">
-                                        {{ \Session::get('comunaFail') }}
+                                        Debe ingresar una comuna para el producto.
                                     </div>
                                     @endif
-                                    @if (\Session::has('comunaLenFail'))
+                                    @if ($resultado === 8)
                                     <div class="p1">
-                                        {{ \Session::get('comunaLenFail') }}
+                                        La comuna del producto debe tener máximo 40 caracteres.
                                     </div>
                                     @endif
                                 </div> 
@@ -194,9 +202,9 @@
                                     </div>
                                 </form>
                                 <div>
-                                    @if (\Session::has('categoryFail'))
+                                    @if ($resultado === 13)
                                     <div class="p1">
-                                        {{ \Session::get('categoryFail') }}
+                                        Debe seleccionar al menos una categoría para el producto.
                                     </div>
                                     @endif
                                 </div>
@@ -209,21 +217,21 @@
                             <div class="col-sm-10">
                                 <textarea class="form-control borde-celdas" rows="5" id="productDescription" placeholder="Ingrese la descripción del producto. Máximo 250 caracteres." name="productDescription"></textarea>
                                 <div>
-                                    @if (\Session::has('descriptionFail'))
+                                    @if ($resultado === 3)
                                     <div class="p1">
-                                        {{ \Session::get('descriptionFail') }}
+                                        Debe ingresar una descripción para el producto.
                                     </div>
                                     @endif
-                                    @if (\Session::has('descriptionLenFail'))
+                                    @if ($resultado === 4)
                                     <div class="p1">
-                                        {{ \Session::get('descriptionLenFail') }}
+                                        La descripción del producto no puede exceder los 250 caracteres.
                                     </div>
                                     @endif
                                 </div>                                
                             </div>
                         </div>
 
-                        <!-- PARA LA IMAGEN ## INCOMPLETO -->
+                        <!-- PARA LA IMAGEN -->
                         <div class="form-group">
                             <label class="control-label col-sm-2 fuente-texto2" for="imagen">Imagen:</label>
                             <div>
@@ -231,10 +239,10 @@
                             </div>
                                 
                             <div>
-                                @if (\Session::has('fail'))
+                                @if ($resultado === 12)
                                 <div class="alert alert-danger imageAlert">
                                     
-                                        {!! \Session::get('fail') !!}
+                                    Imagen inválida.
                                     
                                 </div>
                                 @endif

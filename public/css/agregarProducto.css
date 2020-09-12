@@ -54,7 +54,7 @@
 }
 
 .fondo-nav{
-    background-color: #FFFFFF;
+    
     border-bottom: 1px solid #BFC0C0;
 }
 
@@ -75,4 +75,11 @@
   .imageAlert{
     width:23%;
     height: 20%; 
+  }
+
+  .formularioinvisible{
+    border-color: #ffffff;
+    background-color: #ffffff;
+    border: 0px;
+    margin-bottom:7px;
   }

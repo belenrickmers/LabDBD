@@ -61,59 +61,85 @@ class ProductController extends Controller
     {
         $product = new Product();
 
+        $resultado = 0;
+        $user = User::all()->where('id', '==', $request->id);
+        $user = $user->first();
+        $category = Category::all()->where('visible', '==', true);
         if ($request->productName == NULL){
+            $resultado = 1;
             //return "Debe ingresar un nombre para el producto.";
-            return back()->with('nameFail', 'Debe ingresar un nombre para el producto.');
+            //return back()->with('nameFail', 'Debe ingresar un nombre para el producto.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         if(strlen($request->productName) > 30){
+            $resultado = 2;
             //return "El nombre del producto debe tener maximo 30 caracteres";
-            return back()->with('nameLenFail', 'El nombre del producto debe tener maximo 30 caracteres.');
+            //return back()->with('nameLenFail', 'El nombre del producto debe tener maximo 30 caracteres.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         $product->productName = $request->productName;
 
         if ($request->productDescription == NULL){
+            $resultado = 3;
             //return "Debe ingresar una descripcion para el producto.";
-            return back()->with('descriptionFail', 'Debe ingresar una descripcion para el producto.');
+            //return back()->with('descriptionFail', 'Debe ingresar una descripcion para el producto.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         if(strlen($request->productDescription) > 250){
+            $resultado = 4;
             //return "La descripcion del producto no puede exceder los 250 caracteres";
-            return back()->with('descriptionLenFail', 'La descripcion del producto no puede exceder los 250 caracteres.');
+            //return back()->with('descriptionLenFail', 'La descripcion del producto no puede exceder los 250 caracteres.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         $product->productDescription = $request->productDescription;
 
         if ($request->region == NULL){
+            $resultado = 5;
             //return "Debe ingresar una region para el producto.";
-            return back()->with('regionFail', 'Debe ingresar una region para el producto.');
+            //return back()->with('regionFail', 'Debe ingresar una region para el producto.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         if(strlen($request->region) > 40){
+            $resultado = 6;
             //return "La region del producto debe tener maximo 40 caracteres";
-            return back()->with('regionLenFail', 'La region del producto debe tener maximo 40 caracteres.');
+            //return back()->with('regionLenFail', 'La region del producto debe tener maximo 40 caracteres.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         $product->region = $request->region;
 
         if ($request->comuna == NULL){
+            $resultado = 7;
             //return "Debe ingresar una comuna para el producto.";
-            return back()->with('comunaFail', 'Debe ingresar una comuna para el producto.');
+            //return back()->with('comunaFail', 'Debe ingresar una comuna para el producto.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         if(strlen($request->comuna) > 40){
+            $resultado = 8;
             //return "La comuna del producto debe tener maximo 40 caracteres";
-            return back()->with('comunaLenFail', 'La comuna del producto debe tener maximo 40 caracteres.');
+            //return back()->with('comunaLenFail', 'La comuna del producto debe tener maximo 40 caracteres.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         $product->comuna = $request->comuna;
         
-        //FALTA VALIDAR SI EL PRECIO ES UN NUMERO
-        //$validatePrice = Validator::make($request->all(), ['price' => 'numeric',]);
-        //if($validatePrice->fails()){
-        //    return back()->with('priceTypeFail', 'El precio debe ser un número');
-        //}
+        //VALIDAR SI EL PRECIO ES UN NUMERO
+        $validatePrice = Validator::make($request->all(), ['price' => 'numeric',]);
+        if($validatePrice->fails()){
+            $resultado = 9;
+            //return back()->with('priceTypeFail', 'El precio debe ser un número');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
+        }
 
         if ($request->price == NULL){
+            $resultado = 10;
             //return "Debe ingresar un precio para el producto.";
-            return back()->with('priceFail', 'Debe ingresar un precio para el producto.');
+            //return back()->with('priceFail', 'Debe ingresar un precio para el producto.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         if($request->price < 0){
+            $resultado = 11;
             //return "El precio del producto no puede ser negativo.";
-            return back()->with('priceValueFail', 'El precio del producto no puede ser negativo.');
+            //return back()->with('priceValueFail', 'El precio del producto no puede ser negativo.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
         $product->price = $request->price;
         //Duda si tengo que comprobar estos parametros
@@ -134,8 +160,10 @@ class ProductController extends Controller
             
             $validate = Validator::make($request->all(), ['product_picture' => 'image|mimes:jpeg,png,jpg|max:2048',]);
             if($validate->fails()){
+                $resultado = 12;
                 
                 //return back()->with('fail', 'Imagen invalida.');
+                return View('agregarProducto', compact('user', 'category', 'resultado'));
             }
 
             $image_name = $product_picture->getClientOriginalName();
@@ -147,10 +175,12 @@ class ProductController extends Controller
         $product->save();
         $categories = $request->categories;
         
-        //if(empty($categories)){
+        if(empty($categories)){
+            $resultado = 13;
             //return "Debe seleccionar al menos una categoría para el producto.";
             //return back()->with('categoryFail', 'Debe seleccionar al menos una categoría para el producto.');
-        //}
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
+        }
 
         //CODIGO PARA INSERTAR TUPLA EN USERPRODUCT
         $usProd = new userProduct();
@@ -219,6 +249,7 @@ class ProductController extends Controller
 
         return View('ownProducts', compact('userPros','category','user'));
     }
+
 
     /**
      * Display the specified resource.
@@ -334,11 +365,12 @@ class ProductController extends Controller
        return "El producto ha sido eliminado";
     }
 
-    ///////////   PROBANDO   ///////////////
+    ///////////   ///////////////
     public function publicarProducto(Request $request){
         $category = Category::all()->where('visible', '==', true);
         $user = User::all()->where('id', '==', $request->id);
         $user = $user->first();
-        return View('agregarProducto', compact('category','user'));
+        $resultado = 0;
+        return View('agregarProducto', compact('category','user', 'resultado'));
     }
 }
