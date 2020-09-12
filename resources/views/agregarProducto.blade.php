@@ -90,7 +90,8 @@
                         <h6 class="col-letras fuente-texto2">Ingresa los datos de tu producto para publicarlo.</h6>
                     </div>
                 </div>
-
+                
+                <input type="hidden" id="id" name="id" value= "{{$user->id}}">
                 
                 <div class="col-md-9">
                     <div class="contact-form">

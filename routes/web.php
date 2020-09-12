@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/cuenta','AccountProfileController@showProfile')->name('misDatos');
 Route::post('/misProductos','OwnProductsController@showData')->name('misProductos');
 
+
+Route::post('/homeLogged', 'ownProductsController@goHome')->name('goHomeLogged');
+
 Route::get('/logged', 'CategoryController@indexVisible');
 
 Route::get('/', 'CategoryController@home');
@@ -31,7 +34,8 @@ Route::get('/login', 'CategoryController@log');
 
 
 //VISTA NUEVO USUARIO
-Route::get('/usuario/nuevousuario','CategoryController@home2');
+Route::get('/newuser', 'nuevoRegistroController@showCat');
+Route::post('/newuser/userAuth', 'nuevoRegistroController@validadorDatosRegistro')->name('nuevoRegistro');
 
 //Rutas de cuentas
 Route::get('/account/all', 'AccountController@indexAll');
@@ -154,7 +158,8 @@ Route::delete('/categoryproduct/delete/{id}', 'CategoryProductController@deleteD
 
 ///   PROBANDO   ///
 //Para publicar un producto
-Route::get('/publicarproducto', 'ProductController@publicarProducto');
+Route::post('/publicarproducto', 'ProductController@publicarProducto')->name('newProduct');
+
 
 //Login
 Route::get('/login', 'LoginController@loginHome');

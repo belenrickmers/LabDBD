@@ -8,6 +8,8 @@ use App\Product;
 ///  PROBANDO  ///
 use App\Category;
 use App\CategoryProduct;
+use App\User;
+use App\UserProduct;
 use Validator;
 
 class ProductController extends Controller
@@ -58,6 +60,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
+
         if ($request->productName == NULL){
             //return "Debe ingresar un nombre para el producto.";
             return back()->with('nameFail', 'Debe ingresar un nombre para el producto.');
@@ -99,10 +102,10 @@ class ProductController extends Controller
         $product->comuna = $request->comuna;
         
         //FALTA VALIDAR SI EL PRECIO ES UN NUMERO
-        $validatePrice = Validator::make($request->all(), ['price' => 'numeric',]);
-        if($validatePrice->fails()){
-            return back()->with('priceTypeFail', 'El precio debe ser un número');
-        }
+        //$validatePrice = Validator::make($request->all(), ['price' => 'numeric',]);
+        //if($validatePrice->fails()){
+        //    return back()->with('priceTypeFail', 'El precio debe ser un número');
+        //}
 
         if ($request->price == NULL){
             //return "Debe ingresar un precio para el producto.";
@@ -126,29 +129,85 @@ class ProductController extends Controller
 
         $request->all();
         if($request->hasFile('product_picture')){
-            $destination_path = 'public/images/products';
+            $destination_path = 'images/products';
             $product_picture = $request->file('product_picture');
             
             $validate = Validator::make($request->all(), ['product_picture' => 'image|mimes:jpeg,png,jpg|max:2048',]);
             if($validate->fails()){
                 
-                return back()->with('fail', 'Imagen invalida.');
+                //return back()->with('fail', 'Imagen invalida.');
             }
 
             $image_name = $product_picture->getClientOriginalName();
             $path = $request->file('product_picture')->storeAs($destination_path, $image_name);
             $product->save();
-            $product->product_picture = 'public/images/products/' . $image_name . $product->id;
+            $product->product_picture = 'images/products/' . $product->id . $image_name;
         }
 
         $product->save();
         $categories = $request->categories;
         
-        if(empty($categories)){
+        //if(empty($categories)){
             //return "Debe seleccionar al menos una categoría para el producto.";
-            return back()->with('categoryFail', 'Debe seleccionar al menos una categoría para el producto.');
-        }
+            //return back()->with('categoryFail', 'Debe seleccionar al menos una categoría para el producto.');
+        //}
 
+        //CODIGO PARA INSERTAR TUPLA EN USERPRODUCT
+        $usProd = new userProduct();
+        $usProd->idUser = $request->id;
+        $usProd->idProduct = $product->id;
+        $usProd->save();
+        
+        //PARA COMBINAR LAS VISTAS
+
+        $category = Category::all()->where('visible', '==', true);
+        $user = User::all()->where('id', '==', $request->id);
+        $user = $user->first();
+
+        $idProductsUser = UserProduct::all()->where('idUser', '==', $request->id);
+        $products = array();
+        foreach($idProductsUser as $prodUs){
+            array_push($products, $prodUs->idProduct);
+        }
+        $userProducts = '';
+        foreach($products as $prod){
+            $iterador = '';
+            if($userProducts == '' ){
+                if($prod == 1){
+                    $userProducts = '{"1":';
+                    $iterador = Product::all()->where('id', '==', $prod);
+                    $iterador = substr($iterador, 1);
+                    $iterador = substr_replace($iterador,"", -1);
+                    $userProducts = $userProducts . "" . $iterador;
+                }
+                else{
+                    $userProducts = $userProducts . "" . Product::all()->where('id', '==', $prod);
+                    $userProducts = substr_replace($userProducts ,"",-1);
+                }
+            }
+            else{
+                if($prod == 1){
+                        $userProducts = $userProducts . ',"1":';
+                        $iterador = Product::all()->where('id', '==', $prod);
+                        $iterador = substr($iterador, 1);
+                        $iterador = substr_replace($iterador,"", -1);
+                        $userProducts = $userProducts . "" . $iterador;
+                }
+
+            
+                else{
+                    $iterador = Product::all()->where('id', '==', $prod);
+                    $iterador = substr($iterador, 1);
+                    $iterador = substr_replace($iterador,"", -1);
+                    $userProducts = $userProducts . "," . $iterador;
+                }
+            }
+        }
+        $userProducts = $userProducts . "}";
+        $userPros = json_decode($userProducts);
+
+        //ACA TERMINA LOL
+        
         foreach($categories as $cat){
             $idCategory = Category::all()->where('categoryName', '==', $cat);
             $catProd = new CategoryProduct();
@@ -156,9 +215,9 @@ class ProductController extends Controller
             $catProd->idProduct = $product->id;
             $catProd->save();
         }
-        return response()->json([
-            "message" => "record created"
-        ], 201);
+
+
+        return View('ownProducts', compact('userPros','category','user'));
     }
 
     /**
@@ -193,7 +252,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $review = Review::find($id);
+        $review = Review::find($id);///??????
 
         if ($request->get('productName') != NULL){
             if(strlen($request->productName) > 30){
@@ -276,8 +335,10 @@ class ProductController extends Controller
     }
 
     ///////////   PROBANDO   ///////////////
-    public function publicarProducto(){
+    public function publicarProducto(Request $request){
         $category = Category::all()->where('visible', '==', true);
-        return View('agregarProducto', compact('category'));
+        $user = User::all()->where('id', '==', $request->id);
+        $user = $user->first();
+        return View('agregarProducto', compact('category','user'));
     }
 }

@@ -32,6 +32,7 @@ class LoginController extends Controller
         $category = Category::all()->where('visible', '==', true);
 
         if($validacionUsuario and $validacionPassword){
+            $user = $user->first();
             return View('welcomeLogged', compact('user', 'category', 'resultado'));
         }
         else if($validacionUsuario == false){

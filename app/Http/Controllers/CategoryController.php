@@ -30,19 +30,6 @@ class CategoryController extends Controller
     return View('welcomeNotLogged', compact('category'));
 }
 
-   public function home2()
-   {
-        $category = Category::all()->where('visible', '==', true);
-        return View('newRegister', compact('category'));
-   }
-   
-   public function log()
-   {
-        $category = Category::all()->where('visible', '==', true);
-        return $category;
-        return View('login', compact('category'));
-   }
-
     /**
      * Show the form for creating a new resource.
      *

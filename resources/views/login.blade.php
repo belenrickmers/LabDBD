@@ -61,7 +61,7 @@
             
             <div class="btn-group">
                 <button onclick="window.location.href='/login'" type="button" class="btn btn-round btn-info1">Iniciar sesión</button>
-                <button type="button" class="btn btn-round btn-info">Registrarse</button>
+                <button type="button" class="btn btn-round btn-info" onclick="window.location.href='/newuser'">Registrarse</button>
             </div>
 
         </div>
