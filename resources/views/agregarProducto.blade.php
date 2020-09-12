@@ -101,7 +101,7 @@
                 <div class="col-md-3">
                     <div class="contact-info">
                         <h1 class="col-letras fuente-texto">Publica tu producto</h1>
-                        <h6 class="col-letras fuente-texto2">Ingresa los datos de tu producto para publicarlo.</h6>
+                        <h6 class="col-letras fuente-texto">Ingresa los datos de tu producto para publicarlo.</h6>
                     </div>
                 </div>
                 
@@ -111,7 +111,7 @@
                 <div class="col-md-9">
                     <div class="contact-form">
                         <div class="form-group">
-                            <label class="control-label col-sm-4 fuente-texto2" for="nombre">Nombre publicación:</label>
+                            <label class="control-label col-sm-4 fuente-texto" for="nombre">Nombre publicación:</label>
                             <div class="col-sm-10">          
                                 <input type="text" class="form-control borde-celdas" id="productName" placeholder="Ingrese el nombre de la publicación." name="productName">
                                 <div>
@@ -130,7 +130,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-4 fuente-texto2" for="precio">Precio (CLP):</label>
+                            <label class="control-label col-sm-4 fuente-texto" for="precio">Precio (CLP):</label>
                             <div class="col-sm-10">          
                                 <input type="text" class="form-control borde-celdas" id="price" placeholder="Ingrese el precio del producto." name="price">
                                 <div>
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2 fuente-texto2" for="region">Región:</label>
+                            <label class="control-label col-sm-2 fuente-texto" for="region">Región:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control borde-celdas" id="region" placeholder="Ingrese la región desde donde arrienda." name="region">
                                 <div>
@@ -166,7 +166,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2 fuente-texto2" for="comuna">Comuna:</label>
+                            <label class="control-label col-sm-2 fuente-texto" for="comuna">Comuna:</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control borde-celdas" id="comuna" placeholder="Ingrese la comuna desde donde arrienda." name="comuna">
                                 <div>
@@ -187,7 +187,7 @@
                         <!-- AQUI DEBEN IR LAS CATEGORIAS -->
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2 fuente-texto2" for="categoria">Categorías:</label>
+                            <label class="control-label col-sm-2 fuente-texto" for="categoria">Categorías:</label>
                             <div>
 
                                 <form>
@@ -213,7 +213,7 @@
                         <!-- #############################-->
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2 fuente-texto2" for="descripcion">Descripción:</label>
+                            <label class="control-label col-sm-2 fuente-texto" for="descripcion">Descripción:</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control borde-celdas" rows="5" id="productDescription" placeholder="Ingrese la descripción del producto. Máximo 250 caracteres." name="productDescription"></textarea>
                                 <div>
@@ -233,7 +233,7 @@
 
                         <!-- PARA LA IMAGEN -->
                         <div class="form-group">
-                            <label class="control-label col-sm-2 fuente-texto2" for="imagen">Imagen:</label>
+                            <label class="control-label col-sm-2 fuente-texto" for="imagen">Imagen:</label>
                             <div>
                                 <input id="product_picture" accept="image/*" type="file" name="product_picture" class="col-sm-8" >
                             </div>
@@ -253,7 +253,7 @@
 
                         <div class="form-group">        
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default fuente-texto2">Publicar</button>
+                                <button type="submit" class="btn btn-default fuente-texto">Publicar</button>
                             </div>
                         </div>
                     </div>
