@@ -35,17 +35,20 @@ body{
 .jquery-accordion-menu-header{
   width:100%;
   height:50px;
-  padding-left:22px;
-  float:left;
+  padding-left:32%;
+  float:center;
   line-height:50px;
   font-family: 'Quicksand', sans-serif;
   font-size:20px;
   font-weight:bold;
   color:#EF8354;
   background:#ffffff;
-  border-bottom:solid 2px #EF8354;
-  border-top:solid 2px #EF8354;
-  border-right:solid 2px #EF8354;
+  border-bottom:solid 1px #EF8354;
+  border-top:solid 1px #EF8354;
+  border-right:solid 1px #EF8354;
+  border-left:solid 1.8px #EF8354;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 .jquery-accordion-menu ul{
   margin:0;
@@ -58,7 +61,8 @@ body{
   float:left;
   position:relative;
 }
-.jquery-accordion-menu ul li a{
+
+.menuBoton{
   width:100%;
   padding:14px 22px;
   float:left;
@@ -68,26 +72,20 @@ body{
   font-size:14px;
   background:#ffffff;
   white-space:nowrap;
+  position:absolute;
+  border-top: 0px;
+  border-bottom:solid 1px #EF8354;
+  border-right:solid 1px #EF8354;
+  border-left:solid 1.8px #EF8354;
   position:relative;
-  overflow:hidden;
 }
-.jquery-accordion-menu>ul>li.active>a,
-.jquery-accordion-menu>ul>li:hover>a{
+
+.menuBoton.active,
+.menuBoton:hover{
   color:#ffffff;
   background:#EF8354;
   font-size:14px;
-}
-.jquery-accordion-menu>ul>li>a{
-  border-bottom:solid 2px #EF8354;
-  border-right:solid 2px #EF8354;
-  
-}
-.jquery-accordion-menu ul li a i{
-  width:34px;
-  float:left;
-  line-height:18px;
-  font-size:14px;
-  text-align:left
+  border: 0px;
 }
 
 
@@ -98,9 +96,15 @@ body{
   position: absolute;
   left: 400px;
   margin-top: 6.3%;
-  
-  
 }
+
+.datos hr{
+  
+  background-color: #EF8354;
+  height: 0.01px;
+
+}
+
 .datos h3{
   color: #EF8354;
   background: #ffffff;
@@ -110,12 +114,14 @@ body{
   font-size:20px;
   font-weight:bold;
   border-bottom:solid 1px #BFC0C0;
+  
 }
 
 .datos td {
   font-family: 'Quicksand', sans-serif;
   border-bottom:solid 1px #BFC0C0;
   font-size:16px;
+  
   
 }
 
@@ -127,9 +133,20 @@ body{
 
 .table{
   color: #4F5D75;
+  
 }
 
 
 .bi{
-  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: -1.75px;
 }
+
+.formularioinvisible{
+    border-color: #ffffff;
+    background-color: #ffffff;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+    margin-bottom: 5px;
+  }
