@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/cuenta','cuenta');
-Route::view('/misproductos','ownProducts');
+
+Route::post('/cuenta','AccountProfileController@showProfile')->name('misDatos');
+Route::post('/misProductos','OwnProductsController@showData')->name('misProductos');
 
 Route::get('/logged', 'CategoryController@indexVisible');
 

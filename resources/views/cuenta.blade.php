@@ -1,64 +1,88 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Arriendame.cl | Tu portal de arriendos</title>
+        <title>Arriendame.cl | Tu portal de arriendos</title>
 
-    <!--Navbar-->
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/cuenta.css') }}">
-    <nav class="navbar navbar-expand-lg navbar-custom">
+        <!--Navbar-->
+        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/cuenta.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">    
 
-        <a class="navbar-brand" href="/logged">Arriendame.cl</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link mx-3" href="#">Ofertas</a>
-            </li>
+    </head>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
+
+        <a class="navbar-brand" href="#">Arriendame.cl</a>  
+
+
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link mx-3" href="#">Ofertas</a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Categorías
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-            </li>
-            </ul>
-            <!-- Search form -->
-            <div class="active-pink-3 active-pink-4 mb0.5 mx-4 col-lg-6">
-                <input class="form-control" type="text" placeholder="Buscar producto" aria-label="Search">
-            </div>
-            <button class="btn btn-lg" style="background-color:transparent;">
-                <i class="fas fa-user"></i> Edit
-             </button>
-        </div>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                @foreach($category as $cat)
+                <a class="dropdown-item" href="#">{{ $cat->categoryName }}</a>
+                @endforeach
+            </div>  
+        </li>
+    </ul>
 
-    </nav>
+<!-- Search form -->
+<div class="active-pink-3 active-pink-4 mb0.5 mx-4 col-lg-6">
+    <input class="form-control" type="text" placeholder="Buscar producto" aria-label="Search">
+</div>
 
-    
+<div class="dropdown">
+    <button class="btn btn-round btn-secondary dropdown-toggle boton-cuenta" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z"/>
+            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+        </svg>
+        {{ $user->firstName . " " .  $user->lastName}}
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <form action="{{route( 'misDatos')}} " method="POST">
+                 
+                 <button class="dropdown-item" type="submit" href="/misDatos">
+                   Mis datos personales<input class="invisible" id="id" name="id" value= "{{$user->id}}" >
+                 </button>  
+                 </form>
 
-  </head>
+                 <form action="{{route( 'misProductos')}} " method="POST">
+                 <button class="dropdown-item" type="submit" href="/misProductos">
+                 Mis productos<input class="invisible" id="id" name="id" value= "{{$user->id}}" ></button>
+                 </form>
 
-  <body>
+                 <div class="dropdown-divider"></div>
+                 <a class="dropdown-item" onclick="window.location.href='/'">Cerrar sesión</a>
+    </div>
+</div>
+</div>
+</nav>
 
     <div class="content">
 		<div id="jquery-accordion-menu" class="jquery-accordion-menu">
-			<div class="jquery-accordion-menu-header">Nombre de persona </div>
+			<div class="jquery-accordion-menu-header"> {{$user->firstName . " " .  $user->lastName}} </div>
 			<ul>
                 <li class="btn-group dropright active" > 
                     <a class="dropdown-toggle" href="/cuenta" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
@@ -122,16 +146,16 @@
                             </svg>
                         Nombre
                         </th>
-                            <td>ADLSADL</td>
+                            <td>{{$user->firstName}} </td>
                         </tr>
                         <tr>
                             <th>
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                                 </svg>
-                                Apellidos
+                                Apellido
                             </th>
-                            <td>Uwu</td>
+                            <td>{{$user->lastName}} </td>
                         </tr>
                         <tr>
                             <th> 
@@ -141,7 +165,7 @@
                                 </svg>
                                 Fecha de nacimiento 
                             </th>            
-                            <td>14/07/1990</td>
+                            <td>{{$user->dateofbirth}} </td>
                         </tr>
                         <tr>
                             <th>
@@ -150,7 +174,7 @@
                                 </svg>
                                 Email
                             </th>
-                            <td>lorem@mail.com</td>
+                            <td>{{$user->email}} </td>
                         </tr>
                         <tr>
                             <th>
@@ -159,79 +183,14 @@
                                 </svg>
                                 Número de contacto
                             </th>
-                            <td>615619816568496513615843</td>
+                            <td>{{$user->contactNumber}} </td>
                         </tr>
                     </tbody>
                     
                 </table>
-                <button type="submit" class="btn">Editar</button>
+                <button type="button" class="btn">Editar información</button>
             </div>
         </div>
- <!-- 
-     
- <a href="#" class="btn btn-danger"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-              </svg></span> uwu</a>
-
-    <button type="button" class="btn btn-outline-primary" data-toggle= "button"> Mis productos
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-card-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-            <path fill-rule="evenodd" d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5z"/>
-            <circle cx="3.5" cy="5.5" r=".5"/>
-            <circle cx="3.5" cy="8" r=".5"/>
-            <circle cx="3.5" cy="10.5" r=".5"/>
-          </svg>
-    </button>
-    
-
-
-    <div class="btn-group" role="group">
-        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Perfil 
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-              </svg>
-        </button>
-        <div class="droprigth-menu" aria-labelledby="btnGroupDrop1">
-            <body>
-                <div class="container">
-                    <div class="row">
-                        <h2 class="text-danger">Detalles de usuario</h2>
-                        
-                        
-                        <table class="table table-bordered success">
-                                <thead>
-                                    <tr >
-                                        <th class="info">Nombre</th>
-                                        <td>Vikram</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="info">Apellido</th>
-                                        <td>India maharashtra Pune</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="info">Fecha de nacimiento</th>
-                                        <td>14/07/1990</td>
-                                    </tr>
-                                    <tr>
-                                        <th class="info">Email</th>
-                                        <td>lorem@mail.com</td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <th class="info">Numero de contacto</th>
-                                        <td>191287367829137</td>
-                                    </tr>
-                
-                                </thead>
-                
-                            </table>
-                    </div>
-                </div>
-        </div>
-      </div>
-      
--->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -1,189 +1,14 @@
-
-.navbar-custom {
-  width: 100%;
-  height: 55px;
-  background-color: #2D3142;
-}
-
-.navbar-brand{
-  font-family: 'Pacifico', cursive;
-  color: #EF8354;
-  font-size: 2em;
-}
-
-.nav-item{
-  font-family: 'Quicksand', sans-serif;
-}
-.nav-link{
-  color: #ffffff;
-  font-size: 1em;
-}
-
-.active-pink-4 input[type=text]:focus:not([readonly]) {
-  border: 1px solid #BFC0C0;
-  box-shadow: 0 0 0 1px #BFC0C0;
-}
-.active-pink-3 input[type=text] {
-  border: 1px solid #BFC0C0;
-  box-shadow: 0 0 0 1px #BFC0C0;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1em;
-  height: 1.5em;
-  /*margin: 4em;*/
-}
-.circle {
-  border-radius: 100%;
-  border: 0.25em solid black;
-  height: 50px;
-  width: 50px;
-}
-.glyphicon.glyphicon-edit{
-  font-size:28px;
-  padding: 8px 3px 0 8px;
-}
-
-.submit-with-icon {
-  background: transparent;
-    border: 0px;
-    padding: 0;
-    outline: 0;
-}
-
-.circle:active {
-  content: '';
-  background-color: rgb(235, 235, 235);
-  border-color: rgb(173, 173, 173);
-}
-
-
 /***
 User Profile Sidebar by @keenthemes
 A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
 Licensed under MIT
 ***/
 
-body {
-  background: #F1F3FA;
-}
-
-/* Profile container */
-.profile {
-  margin: 20px 0;
-}
-
-/* Profile sidebar */
-.profile-sidebar {
-  padding: 20px 0 10px 0;
-  background: #fff;
-}
-
-.profile-userpic img {
-  float: none;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  -webkit-border-radius: 50% !important;
-  -moz-border-radius: 50% !important;
-  border-radius: 50% !important;
-}
-
-.profile-usertitle {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.profile-usertitle-name {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
-}
-
-.profile-usertitle-job {
-  text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
-
-.profile-userbuttons {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.profile-userbuttons .btn {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 15px;
-  margin-right: 5px;
-}
-
-.profile-userbuttons .btn:last-child {
-  margin-right: 0px;
-}
-    
-.profile-usermenu {
-  margin-top: 30px;
-}
-
-.profile-usermenu ul li {
-  border-bottom: 1px solid #f0f4f7;
-}
-
-.profile-usermenu ul li:last-child {
-  border-bottom: none;
-}
-
-.profile-usermenu ul li a {
-  color: #93a3b5;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.profile-usermenu ul li a i {
-  margin-right: 8px;
-  font-size: 14px;
-}
-
-.profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
-  color: #5b9bd1;
-}
-
-.profile-usermenu ul li.active {
-  border-bottom: none;
-}
-
-.profile-usermenu ul li.active a {
-  color: #ff0000;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
-  margin-left: -2px;
-}
-
-/* Profile Content */
-.profile-content {
-  padding: 20px;
-  background: #fff;
-  min-height: 460px;
-}
-
-*{box-sizing:border-box; 
--moz-box-sizing:border-box; 
--webkit-box-sizing:border-box;}
-
 body{
   background: #ffffff;
 }
-.content{
-  width: 260px; 
-  margin: 100px auto;
-}
 
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700);
 
 .jquery-accordion-menu,
 .jquery-accordion-menu *{
@@ -199,7 +24,8 @@ body{
   height:500px;
   float:left;
   position:absolute;
-  left: 0px
+  left: 0px;
+  margin-top: 7.35%;
 }
 
 .jquery-accordion-menu 
@@ -213,9 +39,13 @@ body{
   float:left;
   line-height:50px;
   font-family: 'Quicksand', sans-serif;
-  font-weight:600;
+  font-size:20px;
+  font-weight:bold;
   color:#EF8354;
-  background:#2D3142
+  background:#ffffff;
+  border-bottom:solid 2px #EF8354;
+  border-top:solid 2px #EF8354;
+  border-right:solid 2px #EF8354;
 }
 .jquery-accordion-menu ul{
   margin:0;
@@ -234,77 +64,72 @@ body{
   float:left;
   font-family: 'Quicksand', sans-serif;
   text-decoration:none;
-  color:#ffffff;
-  font-size:13px;
-  background:#2D3142;
+  color:#4F5D75;
+  font-size:14px;
+  background:#ffffff;
   white-space:nowrap;
   position:relative;
   overflow:hidden;
 }
 .jquery-accordion-menu>ul>li.active>a,
 .jquery-accordion-menu>ul>li:hover>a{
-  color:#2D3142;
-  background:#EF8354
+  color:#ffffff;
+  background:#EF8354;
+  font-size:14px;
 }
 .jquery-accordion-menu>ul>li>a{
-  border-bottom:solid 1px #BFC0C0
+  border-bottom:solid 2px #EF8354;
+  border-right:solid 2px #EF8354;
+  
 }
 .jquery-accordion-menu ul li a i{
   width:34px;
   float:left;
   line-height:18px;
-  font-size:16px;
+  font-size:14px;
   text-align:left
 }
 
-.dropdown-menu{
-  background: #2D3142;
-}
-
-.search-table{
-  padding: 10%;
-  margin-top: -6%;
-}
 
 .datos{
   background: #ffffff;
-  border: 10px solid #ffffff;
-  border-top: none;
   width: 1000px;
   max-width: 2000px;
   position: absolute;
   left: 400px;
+  margin-top: 6.3%;
+  
+  
 }
 .datos h3{
   color: #EF8354;
   background: #ffffff;
-  padding: 3%;
+  padding: 2%;
   margin-bottom: 0%;
   font-family: 'Quicksand', sans-serif;
+  font-size:20px;
+  font-weight:bold;
+  border-bottom:solid 1px #BFC0C0;
 }
 
 .datos td {
   font-family: 'Quicksand', sans-serif;
+  border-bottom:solid 1px #BFC0C0;
+  font-size:16px;
+  
 }
 
 .datos th {
   font-family: 'Quicksand', sans-serif;
+  border-bottom:solid 1px #BFC0C0;
+  font-size:16px;
 }
 
 .table{
-  color: #2D3142;
+  color: #4F5D75;
 }
 
-.btn{
-  background: #2D3142;
-  font-family: 'Quicksand', sans-serif;
-  text-decoration:none;
-  color:#ffffff;
-  font-size:20px;
-}
 
-.btn.active,
-.btn:hover{
-  color:#2D3142;
-  background:#EF8354
+.bi{
+  margin-bottom: 0px;
 }
