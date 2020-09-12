@@ -13,6 +13,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/newRegister.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <script language="javascript" src="javascript.js"></script>
+    <script language="javascript">
+      function valida_campos(){
+        if(document.form.firstName.value == NULL){
+          alert('El Nombre de cliente no puede estar vacio');
+		      document.form.firsName.select();
+		      return(false);
+	        }
+          document.form.submit();
+      }
+    </script>
+
 
     <title>Registro | Arriendame.cl</title>
 
@@ -21,7 +33,7 @@
   <body>
   <nav class="navbar navbar-expand-lg navbar-custom fondo-nav">
 
-      <a class="navbar-brand" href="#">Arriendame.cl</a>
+      <a class="navbar-brand" href="/">Arriendame.cl</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,60 +62,98 @@
           </div>
           
           <div class="btn-group">
-              <button type="button" class="btn btn-round btn-info1">Iniciar sesión</button>
-              <button type="button" class="btn btn-round btn-info">Registrarse</button>
+              <button type="button" class="btn btn-round btn-info1" onclick="window.location.href='/login'">Iniciar sesión</button>
+              <button type="button" class="btn btn-round btn-info" onclick="window.location.href='/newuser'">Registrarse</button>
           </div>
 
       </div>
   </nav>
 
-
+    
       <div class="container-fluid">
             <section class="container">
               <div class="container-page">				
                 <div class="col-md-6">
 
                   <h3 class="dark-grey">Registro Arriendame.cl</h3>
+                  <hr>
                                                                               
-                  <form action="{{route( 'addUser')}} " method="POST" class="container-sm " enctype = "multipart/form-data">
-                            <div class="form-group col-lg-6">
-                              <label>Nombre</label>
+                  <form action="{{route( 'nuevoRegistro')}} " method="POST" class="container-sm " enctype = "multipart/form-data">
+                          <div class="col-lg-6">
+                            <div>
+                              <label class="form-group">Nombre</label>
                               <input type="text" class="form-control" id="firstName" name="firstName">
+                              @if($verificador == 1)
+                                <label class= "alerta">Debe ingresar su nombre.</label>
+                              @endif
+                              @if($verificador == 2)
+                                <label class= "alerta">Su nombre debe tener un máximo de 20 caracteres.</label>
+                              @endif
                             </div>
                             
-                            <div class="form-group col-lg-6">
-                              <label>Apellido</label>
-                              <input type="text" class="form-control" id="lastName" name="lastName">
-                            </div>
-                            
-                            <div class="form-group col-lg-6">
-                              <label>Contraseña</label>
-                              <input type="password" class="form-control" id="password" name="password">
-                            </div>
-                            
-                            <div class="form-group col-lg-6">
-                              <label>Repetir Contraseña</label>
-                              <input type="password"  class="form-control" id="" name="">
-                            </div>
-                                    
-                            <div class="form-group col-lg-6">
-                              <label>Email</label>
+                             <div>
+                              <label class="form-group">Email</label>
                               <input type="email" class="form-control" id="email" name="email">
+                              @if($verificador == 6)
+                                <label class= "alerta">Debe ingresar su email.</label>
+                              @endif
+                              @if($verificador == 7)
+                                <label class= "alerta">Ya existe un usuario registrado con ese email.</label>
+                              @endif
                             </div>
                             
-                            <div class="form-group col-lg-6">
-                              <label>Repetir Email</label>
-                              <input type="email" class="form-control" id="" name="">
+                            <div>
+                              <label class="form-group">Contraseña</label>
+                              <input type="password" class="form-control" id="password" name="password">
+                              @if($verificador == 8)
+                                <label class= "alerta">Debe ingresar una contraseña</label>
+                              @endif
+                            </div>
+                            
+                            <div>
+                              <label class="form-group">Número de Contacto</label>
+                              <input type="phone" class="form-control" id="contactNumber" value="+569" name="contactNumber">
+                              @if($verificador == 9)
+                                <label class= "alerta">Debe ingresar su número de contacto.</label>
+                              @endif
+                            </div>
+
+                          </div>
+
+                          <div class="col-lg-6">          
+                            <div>
+                              <label class="form-group">Apellido</label>
+                              <input type="text" class="form-control" id="lastName" name="lastName">
+                              @if($verificador == 3)
+                                <label class= "alerta">Debe ingresar su apellido.</label>
+                              @endif
+                              @if($verificador == 4)
+                                <label class= "alerta">Su nombre debe tener un máximo de 20 caracteres.</label>
+                              @endif
+                            </div>
+                                                       
+                            <div>
+                              <label class="form-group">Repetir Email</label>
+                              <input type="email" class="form-control" id="email2" name="email2">
+                              @if($verificador == 11)
+                                <label class= "alerta">Los email no coinciden.</label>
+                              @endif
                             </div>			
                             
-                            <div class="form-group col-lg-6">
-                              <label>Número de Contacto</label>
-                              <input type="phone" class="form-control" id="contactNumber" value="+569" name="contactNumber">
+                            <div>
+                              <label class="form-group">Repetir Contraseña</label>
+                              <input type="password"  class="form-control" id="password2" name="password2">
+                              @if($verificador == 10)
+                                <label class= "alerta">Las contraseñas no coinciden.</label>
+                              @endif
                             </div>
-                            
-                            <div class="form-group col-lg-6">
-                              <label>Fecha de Nacimiento</label>
+                                                                                    
+                            <div>
+                              <label class="form-group">Fecha de Nacimiento</label>
                               <input type="date" class="form-control" id="dateofbirth" name="dateofbirth">
+                              @if($verificador == 5)
+                                <label class= "alerta">Debe ingresar su fecha de nacimiento.</label>
+                              @endif
                             </div>
                             
                             <div class="invisible">
@@ -117,14 +167,15 @@
                               <div class="col-sm-6">
                                 <input type="checkbox" class="checkbox" />Send notifications to this email
                               </div--->				
-                            
-                            </div>
+                          </div> 
+                    </div>
                             
                           
                             <div class="col-md-6">
-                              <div>
-                                <h3 class="dark-grey">Términos y Condiciones</h3>
-                              </div>
+                             
+                              <h3 class="dark-grey">Términos y Condiciones</h3>
+                              <hr>
+
                               <div>
                                   <p>
                                     Al hacer click en el botón "Registrarme", estás aceptando todos los Términos y Condiciones de Arriendame.cl
@@ -142,13 +193,14 @@
                                     Arriendame.cl tomará todas las acciones correspondientes al caso.
                                   </p>
                               </div>
+
                               <div class="form-group">
-                                <button type="submit" class="btn btn-secondary">Registrarme</button>
+                                <input value="Registrarme" type="submit" class="botonregister btn">
                               </div>
                   </form>
-                </div>
               </div>
-            </section>
+            </div>
+          </section>
       </div>
       
     <!-- Optional JavaScript -->
