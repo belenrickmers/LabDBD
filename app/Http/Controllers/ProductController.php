@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 
-///  PROBANDO  ///
+
 use App\Category;
 use App\CategoryProduct;
 use App\User;
@@ -137,6 +137,12 @@ class ProductController extends Controller
         }
         if($request->price < 0){
             $resultado = 11;
+            //return "El precio del producto no puede ser negativo.";
+            //return back()->with('priceValueFail', 'El precio del producto no puede ser negativo.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
+        }
+        if($request->price > 2000000000){
+            $resultado = 14;
             //return "El precio del producto no puede ser negativo.";
             //return back()->with('priceValueFail', 'El precio del producto no puede ser negativo.');
             return View('agregarProducto', compact('user', 'category', 'resultado'));

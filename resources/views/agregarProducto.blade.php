@@ -144,6 +144,11 @@
                                         El precio del producto no puede ser negativo.
                                     </div>
                                     @endif
+                                    @if ($resultado === 14)
+                                    <div class="p1">
+                                        El precio del producto no puede ser mayor a 2000000000.
+                                    </div>
+                                    @endif
                                 </div> 
                             </div>
                         </div>
