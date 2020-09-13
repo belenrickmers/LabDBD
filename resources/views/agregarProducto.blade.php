@@ -76,16 +76,19 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <form action="{{route( 'misDatos')}} " method="POST"> 
-                    <button class="dropdown-item" type="submit" href="/misDatos">
-                        Mis datos personales<input class="invisible" id="id" name="id" value= "{{$user->id}}" >
-                    </button>  
-                    </form>
+                    <input type="hidden" class="invisible" id="id" name="id" value= "{{$user->id}}" >
+                        <a> 
+                            <input value="Mis Datos Personales" type="submit" class="dropdown-item">
+                        </a> 
+                </form>
 
-                    <form action="{{route( 'misProductos')}} " method="POST">
-                    <button class="dropdown-item" type="submit" href="/misProductos">
-                        Mis productos<input class="invisible" id="id" name="id" value= "{{$user->id}}" >
-                    </button>
-                    </form>
+                <form action="{{route( 'misProductos')}} " method="POST">
+                    <input type="hidden" class="invisible" id="id" name="id" value= "{{$user->id}}" >
+                    <a> 
+                        <input value="Mis Productos" type="submit" class="dropdown-item">
+                    </a> 
+                </form>
+
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/">Cerrar sesión</a>
                 </div>

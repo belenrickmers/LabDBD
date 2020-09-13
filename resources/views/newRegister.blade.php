@@ -194,9 +194,10 @@
                                   </p>
                               </div>
 
-                              <div class="form-group">
-                                <input value="Registrarme" type="submit" class="botonregister btn">
-                              </div>
+                                <div class="form-group">
+                                  <input value="Registrarme" type="submit" class="botonregister btn">
+                                </div>
+                            </div>
                   </form>
               </div>
             </div>

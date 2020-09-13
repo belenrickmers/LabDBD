@@ -192,7 +192,7 @@ var {
   .jquery-accordion-menu-header{
     width:100%;
     height:50px;
-    padding-left:32%;
+    padding-left:20%;
     float:center;
     line-height:50px;
     font-family: 'Quicksand', sans-serif;

@@ -64,22 +64,24 @@
               <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
               <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
             </svg>
-            {{ $user->first()->firstName . " " .  $user->first()->lastName}}
+            {{ $user->firstName . " " .  $user->lastName}}
           </button>
 
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
             <form action="{{route( 'misDatos')}} " method="POST"> 
-              <button class="dropdown-item" type="submit" href="/misDatos">
-                Mis datos personales<input class="invisible" id="id" name="id" value= "{{$user->id}}" >
-              </button>  
-            </form>
+                <input type="hidden" class="invisible" id="id" name="id" value= "{{$user->id}}" >
+                        <a> 
+                            <input value="Mis Datos Personales" type="submit" class="dropdown-item">
+                        </a> 
+                </form>
 
             <form action="{{route( 'misProductos')}} " method="POST">
-              <button class="dropdown-item" type="submit" href="/misProductos">
-                Mis productos<input class="invisible" id="id" name="id" value= "{{$user->id}}" >
-              </button>
-            </form>
+                <input type="hidden" class="invisible" id="id" name="id" value= "{{$user->id}}" >
+                    <a> 
+                        <input value="Mis Productos" type="submit" class="dropdown-item">
+                    </a> 
+                </form>
 
             <div class="dropdown-divider"></div>
               <a class="dropdown-item" onclick="window.location.href='/'">Cerrar sesión</a>
