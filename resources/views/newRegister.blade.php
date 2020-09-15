@@ -112,9 +112,9 @@
                             
                             <div>
                               <label class="form-group">Número de Contacto</label>
-                              <input type="phone" class="form-control" id="contactNumber" value="+569" name="contactNumber">
+                              <input type="tel" class="form-control" id="contactNumber" value="+569" name="contactNumber">
                               @if($verificador == 9)
-                                <label class= "alerta">Debe ingresar su número de contacto.</label>
+                                <label class= "alerta">El número de contacto ingresado es inválido.</label>
                               @endif
                             </div>
 
@@ -194,9 +194,10 @@
                                   </p>
                               </div>
 
-                              <div class="form-group">
-                                <input value="Registrarme" type="submit" class="botonregister btn">
-                              </div>
+                                <div class="form-group">
+                                  <input value="Registrarme" type="submit" class="botonregister btn">
+                                </div>
+                            </div>
                   </form>
               </div>
             </div>

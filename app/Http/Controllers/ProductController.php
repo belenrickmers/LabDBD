@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 
-///  PROBANDO  ///
+use Illuminate\Support\Str;
 use App\Category;
 use App\CategoryProduct;
 use App\User;
@@ -141,6 +141,12 @@ class ProductController extends Controller
             //return back()->with('priceValueFail', 'El precio del producto no puede ser negativo.');
             return View('agregarProducto', compact('user', 'category', 'resultado'));
         }
+        if($request->price > 2000000000){
+            $resultado = 14;
+            //return "El precio del producto no puede ser negativo.";
+            //return back()->with('priceValueFail', 'El precio del producto no puede ser negativo.');
+            return View('agregarProducto', compact('user', 'category', 'resultado'));
+        }
         $product->price = $request->price;
         //Duda si tengo que comprobar estos parametros
         //$product->availability = $request->availability;
@@ -155,7 +161,7 @@ class ProductController extends Controller
 
         $request->all();
         if($request->hasFile('product_picture')){
-            $destination_path = 'images/products';
+            $destination_path = 'public/images/products';
             $product_picture = $request->file('product_picture');
             
             $validate = Validator::make($request->all(), ['product_picture' => 'image|mimes:jpeg,png,jpg|max:2048',]);
@@ -166,10 +172,10 @@ class ProductController extends Controller
                 return View('agregarProducto', compact('user', 'category', 'resultado'));
             }
 
-            $image_name = $product_picture->getClientOriginalName();
+            $image_name = Str::random(20). '.jpg';
             $path = $request->file('product_picture')->storeAs($destination_path, $image_name);
             $product->save();
-            $product->product_picture = 'images/products/' . $product->id . $image_name;
+            $product->product_picture = 'images/products/' . $image_name;
         }
 
         $product->save();

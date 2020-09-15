@@ -77,32 +77,32 @@
                 <h2 class="text-center">Inicia sesión</h2>
 
                 <form action="{{route( 'ingresoDatosLogin')}} " method="POST" class="container-sm ">
-    <div class="form-group">
-        <label for="exampleInputEmail1" class="text">Usuario</label>
-        <input type="text" class="form-control" placeholder="Ingrese su email" name="email" id="email">
-        @if($resultado == 1)
-            <p class= 'p1'>Usuario incorrecto, intente de nuevo. </p>
-        @endif
-        
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1" class="text">Contraseña</label>
-        <input type="password" class="form-control" placeholder="Ingrese su contraseña" name="password" id="password">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="text">Usuario</label>
+                        <input type="text" class="form-control" placeholder="Ingrese su email" name="email" id="email">
+                        @if($resultado == 1)
+                            <p class= 'p1'>Usuario incorrecto, intente de nuevo. </p>
+                        @endif
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="text">Contraseña</label>
+                        <input type="password" class="form-control" placeholder="Ingrese su contraseña" name="password" id="password">
 
-        @if($resultado == 2)
-            <p class= 'p1'>Contraseña incorrecta, intente de nuevo</p>
-        @endif
-    </div>
+                        @if($resultado == 2)
+                            <p class= 'p1'>Contraseña incorrecta, intente de nuevo</p>
+                        @endif
+                    </div>
+                    
+                        <div class="form-check">
+                        <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                        <small>Recuérdame</small>
+                        </label>
+                        <button type="submit" class="btn btn-login float-right">Aceptar</button>
+                    </div>
     
-        <div class="form-check">
-        <label class="form-check-label">
-        <input type="checkbox" class="form-check-input">
-        <small>Recuérdame</small>
-        </label>
-        <button type="submit" class="btn btn-login float-right">Aceptar</button>
-    </div>
-    
-    </form>
+                </form>
             <!------------------- PROBANDO IF -------------------->
             <!----@if( $resultado == 1)
                 usuario incorrecto

@@ -59,7 +59,7 @@
     color: #EF8354;
     background-color: #ffffff;
   }
-  
+  .boton-cuenta.active,
   .boton-cuenta:hover{
     color: #ffffff;
     background-color: #4F5D75;
@@ -95,7 +95,7 @@
 } 
 
 .shopping-cart-wrap .price {
-    color: #007bff;
+    color: #c8ff00;
     font-size: 18px;
     font-weight: bold;
     margin-right: 5px;
@@ -137,7 +137,10 @@ var {
   .formularioinvisible{
     border-color: #ffffff;
     background-color: #ffffff;
-    border: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+    margin-bottom: 5px;
   }
 
   .botonnuevoproducto{
@@ -146,7 +149,9 @@ var {
     font-size: 0.95em;
     color: #ffffff;
     background-color:  #EF8354;
-    margin-top: 25px;
+    margin-top: 20px;
+    margin-left: 86%;
+    margin-bottom: 20px;
 }
 
   .botonnuevoproducto.active,
@@ -187,17 +192,20 @@ var {
   .jquery-accordion-menu-header{
     width:100%;
     height:50px;
-    padding-left:22px;
-    float:left;
+    padding-left:20%;
+    float:center;
     line-height:50px;
     font-family: 'Quicksand', sans-serif;
     font-size:20px;
     font-weight:bold;
     color:#EF8354;
     background:#ffffff;
-    border-bottom:solid 2px #EF8354;
-    border-top:solid 2px #EF8354;
-    border-right:solid 2px #EF8354;
+    border-bottom:solid 1px #EF8354;
+    border-top:solid 1px #EF8354;
+    border-right:solid 1px #EF8354;
+    border-left:solid 1.8px #EF8354;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
   }
   .jquery-accordion-menu ul{
     margin:0;
@@ -210,7 +218,8 @@ var {
     float:left;
     position:relative;
   }
-  .jquery-accordion-menu ul li a{
+  
+  .menuBoton{
     width:100%;
     padding:14px 22px;
     float:left;
@@ -220,26 +229,20 @@ var {
     font-size:14px;
     background:#ffffff;
     white-space:nowrap;
+    position:absolute;
+    border-top: 0px;
+    border-bottom:solid 1px #EF8354;
+    border-right:solid 1px #EF8354;
+    border-left:solid 1.8px #EF8354;
     position:relative;
-    overflow:hidden;
   }
-  .jquery-accordion-menu>ul>li.active>a,
-  .jquery-accordion-menu>ul>li:hover>a{
+  
+  .menuBoton.active,
+  .menuBoton:hover{
     color:#ffffff;
     background:#EF8354;
     font-size:14px;
-  }
-  .jquery-accordion-menu>ul>li>a{
-    border-bottom:solid 2px #EF8354;
-    border-right:solid 2px #EF8354;
-    
-  }
-  .jquery-accordion-menu ul li a i{
-    width:34px;
-    float:left;
-    line-height:18px;
-    font-size:14px;
-    text-align:left
+    border: 0px;
   }
 
   .col-md-6{

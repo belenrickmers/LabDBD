@@ -7,6 +7,7 @@
 .navbar-brand{
     font-family: 'Pacifico', cursive;
     color: #EF8354;
+    border-color: #ffffff;
     font-size: 2em;
     border-color: #ffffff;
     margin-left: 4em;
@@ -80,6 +81,11 @@
   width: 125%;
 }
 
+.formularioinvisible{
+  border-color: #ffffff;
+  background-color: #ffffff;
+  border: 0px;
+}
 
 
 

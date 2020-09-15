@@ -7,7 +7,7 @@
     font-family: 'Pacifico', cursive;
     color: #EF8354;
     font-size: 2em;
-    margin-left: 4em;
+    margin-left: 3em;
     margin-right: 1em;
 }
 
@@ -93,13 +93,16 @@
     width:50%;
   }
   .col-md-6{
+    font-family: 'Quicksand', sans-serif;
     position:middle;
+    margin-bottom:100px;
     min-height:0px;
     padding-right:-100px;
     padding-left:-100px;
     float:left;
     width:100%;
   }
+
   .container-fluid{
       padding-right:15px;
       padding-left:15px;
@@ -111,14 +114,14 @@
   .container-page{
     margin: auto;
     width:1000px;
-    padding: 40px;
+    padding: 15px;
     }
 
-    .dark-grey p{
-        float: left;
-        width: 500px;
-        padding: 10px;
+    .dark-grey{
         font-family: 'Quicksand', sans-serif;
+        width: 500px;
+        padding: 15px;
+        
     }
 
     .btn-secondary{

@@ -156,7 +156,7 @@ Route::put('/categoryproduct/update/{id}', 'CategoryProductController@update');
 Route::delete('/categoryproduct/delete/{id}', 'CategoryProductController@deleteData');
 
 
-///   PROBANDO   ///
+
 //Para publicar un producto
 Route::post('/publicarproducto', 'ProductController@publicarProducto')->name('newProduct');
 
