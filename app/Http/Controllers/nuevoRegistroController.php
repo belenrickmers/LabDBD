@@ -72,7 +72,7 @@ class nuevoRegistroController extends Controller
     }
     
 
-    if($request->contactNumber == NULL){
+    if(strlen($request->contactNumber) > 12){
         $verificador = 9;
         return View('newRegister', compact('category','verificador'));
     }

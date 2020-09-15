@@ -27,7 +27,7 @@ $factory->define(User::class, function (Faker $faker) {
         'dateofbirth' => $faker->dateTime($max = 'now', $timezone = null),
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'contactNumber' => $faker->randomNumber($nbDigits = 8, $strict = false),
+        'contactNumber' => $faker->numerify('############'),
         'visible' => $faker->boolean,
         'remember_token' => Str::random(10),
     ];
